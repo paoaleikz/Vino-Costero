@@ -1,0 +1,17 @@
+<mat-card class="vaccine-card">
+    <div class="card-info"></div>
+    <mat-card-content>
+      <h2 class="mb-32"> {{ title }}</h2>
+      <div class="vaccine-list">
+        <div *ngFor="let vaccine of lstVaccine" class="vaccine-item">
+          <h3 mat-subheader>{{ vaccine.nombre }}</h3>
+          <mat-divider></mat-divider>
+          <ul class="dose-list">
+            <li *ngFor="let dose of vaccine.dosis">
+              {{ dose.descripcion }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>

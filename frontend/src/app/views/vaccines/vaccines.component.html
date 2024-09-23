@@ -1,0 +1,42 @@
+<!-- Cards -->
+<div class="row">
+  <mat-card class="w-100">
+    <mat-card-header>
+      <mat-card-title>
+        <h4 class="mb-32">Información de Vacunas</h4>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div class="row">
+          <div class="col-12">
+            <mat-slide-toggle class="custom-slide-toggle"  [(ngModel)]="blnShowAgesInfo" > 
+              Prevenciones | Por edad
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider />
+    <mat-card-content>
+
+      <div *ngIf="!blnShowAgesInfo; else showAgeVaccine">
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let vacuna of lstInfoVaccine">
+            <app-info-vaccine-card [title]="vacuna.nombre" [lstDosis]="vacuna.dosis"
+              [lstPrevenciones]="vacuna.prevenciones" />
+          </div>
+        </div>
+      </div>
+      
+      <ng-template #showAgeVaccine>
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let age of lstAgeVaccine">
+            <app-age-vaccine-card [title]="age.descripcion" [lstVaccine]="age.vacunas"/>
+          </div>
+        </div>
+      </ng-template>
+
+      
+      
+    </mat-card-content>
+  </mat-card>
+</div>

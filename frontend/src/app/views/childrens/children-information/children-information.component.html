@@ -1,0 +1,74 @@
+<div>
+    <div class="row">
+        <div class="col-lg-4">
+            <mat-card class="w-100">
+                <mat-card-header>
+                    <div>
+                        <img src="assets/images/boy.png" class="w-100" alt="">
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                        <p class="fs-18 lh-lg fw-medium">
+                            Nombre Completo del Niño
+                        </p>
+                        <p class="op-7">
+                            Edad: 6 Meses
+                        </p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-lg-8">
+            <!-- Form Layout -->
+            <mat-card class="w-100">
+                <mat-card-header>
+                    <mat-card-title>Información</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form>
+                        <mat-form-field class="w-100 fs-16" appearance="outline">
+                            <mat-label>Nombre y Apellido</mat-label>
+                            <input matInput type="text" placeholder="Enter your Name">
+                        </mat-form-field>
+                        <div class="form-row">
+                            <mat-form-field class="form-field fs-16" appearance="outline">
+                              <mat-label>Peso</mat-label>
+                              <input matInput type="text" placeholder="Enter your email">
+                            </mat-form-field>
+                        
+                            <mat-form-field class="form-field fs-16" appearance="outline">
+                              <mat-label>Talla</mat-label>
+                              <input matInput type="text" placeholder="Enter your email">
+                            </mat-form-field>
+                          </div>
+                    
+                          <mat-form-field class="w-100 fs-16" appearance="outline">
+                            <mat-label>Fecha Nacimiento</mat-label>
+                            <input matInput  [matDatepicker]="picker">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    
+                          <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
+                            <mat-label class="text-secondary">Genero</mat-label>
+                            <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Femenio</mat-radio-button>
+                            <mat-radio-button value="2" class="mt-8 mb-16 d-block">Masculino</mat-radio-button>
+                          </mat-radio-group>
+                    
+                    
+                          <mat-form-field class="w-100 fs-16" appearance="outline">
+                            <mat-label>Observaciones</mat-label>
+                            <textarea matInput rows="3" placeholder="Write your message"></textarea>
+                          </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions style="display: flex; justify-content: right;">
+                    <button [disabled]="false" mat-flat-button color="primary" (click)="onBack()" type="submit">Editar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<app-children-vaccines></app-children-vaccines>

@@ -1,0 +1,51 @@
+<!-- Form Layout -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="mb-32">Registro de Hijo</h4>
+    <form>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre y Apellido</mat-label>
+        <input matInput type="text" placeholder="Enter your Name">
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field class="form-field fs-16" appearance="outline">
+          <mat-label>Peso</mat-label>
+          <input matInput type="text" placeholder="Enter your email">
+        </mat-form-field>
+    
+        <mat-form-field class="form-field fs-16" appearance="outline">
+          <mat-label>Talla</mat-label>
+          <input matInput type="text" placeholder="Enter your email">
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Fecha Nacimiento</mat-label>
+        <input matInput  [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
+        <mat-label class="text-secondary">Genero</mat-label>
+        <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Femenio</mat-radio-button>
+        <mat-radio-button value="2" class="mt-8 mb-16 d-block">Masculino</mat-radio-button>
+      </mat-radio-group>
+
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput rows="3" placeholder="Write your message"></textarea>
+      </mat-form-field>
+
+
+      <div style="display: flex; justify-content: center;  gap: 16px;">
+
+        <button mat-flat-button color="primary" (click)="onBack()" type="submit">Crear Registro</button>
+        <button mat-flat-button color="accent" (click)="onBack()" type="submit">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

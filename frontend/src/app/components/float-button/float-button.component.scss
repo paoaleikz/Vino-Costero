@@ -1,0 +1,31 @@
+.fab-container {
+    position: fixed;
+    z-index: 1000;
+    /* Ensure it's on top of other elements */
+}
+
+.top-left {
+    top: 16px;
+    left: 16px;
+}
+
+.top-right {
+    top: 16px;
+    right: 16px;
+}
+
+.bottom-left {
+    bottom: 16px;
+    left: 16px;
+}
+
+.bottom-right {
+    bottom: 16px;
+    right: 16px;
+}
+
+.icon-color {
+    /* Color of the button */
+    color: white;
+    /* Color of the icon */
+}

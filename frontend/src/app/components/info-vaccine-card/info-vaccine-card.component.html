@@ -1,0 +1,23 @@
+<mat-card>
+    <div class="card-info"></div>
+    <mat-card-content>
+        <h2 class="mb-32">{{title}}</h2>
+        <div class="scrollable-content">
+            <h4>Prevenciones</h4>
+            <mat-divider></mat-divider>
+            <ul>
+                <li *ngFor="let prevencion of lstPrevenciones">
+                    {{prevencion.descripcion}}
+                </li>
+            </ul>
+
+            <h4>Dosis</h4>
+            <mat-divider></mat-divider>
+            <ul>
+                <li *ngFor="let dosis of lstDosis">
+                    {{dosis.descripcion}} - {{dosis.descripcionEdad}}
+                </li>
+            </ul>
+        </div>
+    </mat-card-content>
+</mat-card>

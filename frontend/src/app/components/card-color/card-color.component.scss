@@ -1,0 +1,26 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    font-family: Arial, sans-serif;
+    margin: 10px;
+  }
+  .card-header {
+    padding: 15px;
+    background-color: #f1f1f1;
+  }
+  .card-color {
+    height: 20px; /* Altura de la franja de color */
+  }
+  .card-title {
+    font-size: 1.2em;
+    margin: 0;
+    text-align: center;
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .high { background-color: #ff4c4c; }
+  .medium { background-color: #ffab00; }
+  .low { background-color: #4caf50; }

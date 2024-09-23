@@ -1,0 +1,58 @@
+@import '../../../assets/styles/style.scss';
+
+.card-info {
+    height: 40px; /* Altura de la franja de color */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color:  $warning;
+  }
+
+  .vaccine-card {
+    max-height: 400px; /* Altura máxima del card */
+    overflow: hidden; /* Esconde cualquier overflow */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .vaccine-list {
+    max-height: 300px; /* Altura máxima de la lista */
+    overflow-y: auto; /* Hacer scroll vertical */
+    scrollbar-width: none; /* Ocultar barra de scroll en Firefox */
+  }
+  
+  .vaccine-list::-webkit-scrollbar {
+    display: none; /* Ocultar barra de scroll en Chrome, Safari */
+  }
+  
+  .vaccine-item {
+    margin-bottom: 16px;
+  }
+  
+  .dose-list {
+    list-style-type: disc; /* Viñetas estilo por defecto */
+    padding-top: 10px;
+    padding-left: 20px; /* Asegura margen para las viñetas */
+  }
+  
+  .dose-list li {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+ /* Asegura que las tarjetas tengan el mismo tamaño */
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alínea el contenido de arriba hacia abajo */
+  height: 100%;
+}
+
+/* Mantiene los textos y contenido alineado en la parte superior */
+mat-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alínea el contenido en la parte superior */
+  overflow-y: auto;
+  padding-bottom: 16px; /* Evita que el contenido quede muy pegado al borde inferior */
+}

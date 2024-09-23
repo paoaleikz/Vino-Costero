@@ -1,0 +1,14 @@
+.row {
+    display: flex;
+  }
+  
+  .col-lg-4, .col-lg-8 {
+    display: flex; 
+    align-items: stretch; /* Estira las columnas para igualar la altura */
+  }
+  
+  .mat-card {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+  }

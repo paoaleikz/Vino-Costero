@@ -1,0 +1,58 @@
+@import '../../../assets/styles/style.scss';
+
+.card-info {
+    height: 40px; /* Altura de la franja de color */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color:  $info
+  }
+
+mat-card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alínea el contenido de arriba hacia abajo */
+    margin: 16px;
+    padding: 16px;
+}
+
+/* Mantiene los textos y contenido alineado en la parte superior */
+mat-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alínea el contenido en la parte superior */
+  overflow-y: auto;
+  padding-bottom: 16px; /* Evita que el contenido quede muy pegado al borde inferior */
+}
+
+/* Scrollable content without scrollbar */
+.scrollable-content {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding-right: 16px;
+}
+
+/* Oculta la barra de scroll en navegadores WebKit */
+.scrollable-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* O transparent si prefieres */
+}
+
+/* Firefox (ocultar scroll) */
+.scrollable-content {
+  scrollbar-width: none; /* Firefox */
+}
+
+ul {
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 20px; /* Ajuste de padding para las viñetas */
+    list-style-type: disc; /* Estilo de viñetas */
+}
+
+li {
+    margin-bottom: 8px;
+    word-wrap: break-word;
+}
+

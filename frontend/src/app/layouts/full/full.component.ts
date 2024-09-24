@@ -30,20 +30,15 @@ export class FullComponent {
 
   sidebarMenu: sidebarMenu[] = [
     {
-      link: "/childrens",
-      icon: "users",
-      menu: "Registro Hijos",
+      link: "/tierra",
+      icon: "home",
+      menu: "Registro Tierras",
     },
     {
-      link: "/citas",
+      link: "/parcela",
       icon: "layout",
-      menu: "Citas",
+      menu: "Parcelas",
     },
-    {
-      link: "/vaccines",
-      icon: "info",
-      menu: "Vacunas",
-    }
   ]
 
 }

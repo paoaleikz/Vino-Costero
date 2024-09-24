@@ -14,8 +14,8 @@ import { DemoFlexyModule } from './demo-flexy-module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
 import { ChildrenModule } from './views/childrens/children.module';
-import { CitasModule } from './views/citas/citas.module';
-import { VaccinesModule } from './views/vaccines/vaccines.module';
+import { ControlTierraModule } from './views/control-tierra/control-tierra.module';
+import { ParcelaModule } from './views/parcelas/parcela.module';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { VaccinesModule } from './views/vaccines/vaccines.module';
     ComponentsModule,
     FormsModule,
     ChildrenModule,
-    CitasModule,
-    VaccinesModule
+    ControlTierraModule,
+    ParcelaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

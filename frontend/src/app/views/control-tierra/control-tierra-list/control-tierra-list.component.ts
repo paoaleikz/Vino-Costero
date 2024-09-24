@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialog} from '@angular/material/dialog';
-import { CitaVaccineUpdateComponent } from '../cita-vaccine-update/cita-vaccine-update.component'
 
 export interface PeriodicElement {
   id: number;
@@ -22,28 +20,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'app-cita-list',
-  templateUrl: './cita-list.component.html',
-  styleUrls: ['./cita-list.component.scss']
+  selector: 'app-control-tierra-list',
+  templateUrl: './control-tierra-list.component.html',
+  styleUrls: ['./control-tierra-list.component.scss']
 })
-export class CitaListComponent implements OnInit {
+export class ControlTierraListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'assigned', 'name', 'priority', 'budget'];
+  //displayedColumns = [];
   dataSource = ELEMENT_DATA;
-  
-  constructor(private _router: Router,public dialog: MatDialog) { }
+  constructor(private _router: Router,) { }
 
   ngOnInit(): void {
   }
 
-  openModal() :void {
-       this.dialog.open(CitaVaccineUpdateComponent,{
-        height: '20%',
-        width: '40%',
-      });
-  }
-
   handleAddClick(): void {
-    this._router.navigate(['/citas/event']);
+    this._router.navigate(['/tierra/register']);
     // Implement your logic here
+  }
+  getInfo(): void {
+    //this._router.navigate(['/childrens/info']);
   }
 }

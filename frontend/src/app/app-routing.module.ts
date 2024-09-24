@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ChildrenListComponent } from './views/childrens/children-list/children-list.component';
-import { CitaListComponent } from './views/citas/cita-list/cita-list.component';
-import { CitaVaccineComponent } from './views/citas/cita-vaccine/cita-vaccine.component';
-import { VaccinesComponent } from './views/vaccines/vaccines.component';
+import { ControlTierraListComponent } from './views/control-tierra/control-tierra-list/control-tierra-list.component';
+import { ControlTierraRegisterComponent } from './views/control-tierra/control-tierra-register/control-tierra-register.component';
+import { ParcelaRegisterComponent } from './views/parcelas/parcela-register/parcela-register.component';
+import { ParcelaListComponent } from './views/parcelas/parecela-list/parcela-list.component';
 import { FullComponent } from './layouts/full/full.component';
-import { ChildrenRegisterComponent } from './views/childrens/children-register/children-register.component';
-import { ChildrenInformationComponent } from './views/childrens/children-information/children-information.component';
 
 const routes: Routes = [
   {
@@ -16,12 +14,10 @@ const routes: Routes = [
     children: [
       {path:"", redirectTo:"/home", pathMatch:"full"},
       {path:"home", component:DashboardComponent},
-      {path:"childrens", component:ChildrenListComponent},
-      {path:"childrens/register", component:ChildrenRegisterComponent},
-      {path:"childrens/info", component:ChildrenInformationComponent},
-      {path:"citas", component:CitaListComponent},
-      {path:"citas/event", component:CitaVaccineComponent},
-      {path:"vaccines", component:VaccinesComponent},
+      {path:"tierra", component:ControlTierraListComponent},
+      {path:"tierra/register", component:ControlTierraRegisterComponent}, 
+      {path:"parcela", component:ParcelaListComponent},
+      {path:"parcela/register", component:ParcelaRegisterComponent}
      ]
   },
 

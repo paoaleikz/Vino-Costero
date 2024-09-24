@@ -1,7 +1,7 @@
 <!-- Daily Activity -->
 <mat-card class="w-100">
   <mat-card-content>
-    <h4 class="mb-56">Historial de Citas</h4>
+    <h4 class="mb-56">Parcelas</h4>
 
     <div class="table-responsive">
       <table mat-table [dataSource]="dataSource" class="text-nowrap w-100">
@@ -14,7 +14,7 @@
 
         <!-- Assigned Column -->
         <ng-container matColumnDef="assigned">
-          <th mat-header-cell *matHeaderCellDef> Assigned </th>
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
           <td mat-cell *matCellDef="let element">
             <p class="mb-0 fw-medium">{{ element.name }}</p>
             <p class="mb-0 fw-normal op-5">{{ element.work }}</p>
@@ -23,7 +23,7 @@
 
         <!-- Project Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Project </th>
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
           <td mat-cell *matCellDef="let element">
             <p class="mb-0 fw-medium op-5">{{element.project}}</p>
           </td>
@@ -33,7 +33,7 @@
         <ng-container matColumnDef="priority">
           <th mat-header-cell *matHeaderCellDef> Priority </th>
           <td mat-cell *matCellDef="let element">
-            <span class="badge {{element.badge}} rounded-pill" (click)="openModal()">{{element.priority}}</span>
+            <span class="badge {{element.badge}} rounded-pill"  (click)="getInfo()">{{element.priority}}</span>
           </td>
         </ng-container>
 
@@ -53,7 +53,7 @@
 </mat-card>
 
 <app-float-button
-  icon="calendar_month_add" 
+  icon="add_circle" 
   position="bottom-right"
   (action)="handleAddClick();">
 </app-float-button>

@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 300px;
 }
 
 .sidenav .mat-toolbar {
@@ -14,4 +14,19 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+mat-icon {
+  font-size: 24px; /* Cambia el tamaño */
+  
+}
+.vertical-align {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos en columna */
+  align-items: center;    /* Centra los elementos horizontalmente */
+  text-align: center;     /* Centra el texto si es necesario */
+}
+
+.vertical-align img {
+  margin-bottom: 10px; /* Ajusta el espacio entre la imagen y el texto */
 }

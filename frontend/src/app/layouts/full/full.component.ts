@@ -31,14 +31,30 @@ export class FullComponent {
   sidebarMenu: sidebarMenu[] = [
     {
       link: "/tierra",
-      icon: "home",
+      icon: "landscape",
       menu: "Registro Tierras",
     },
     {
       link: "/parcela",
-      icon: "layout",
+      icon: "perm_media",
       menu: "Parcelas",
     },
+    {
+      link: "/control-produccion-vinos",
+      icon: "liquor",
+      menu: "Control Produccion Vinos",
+    },
+    {
+      link: "/Registro-siembra-parcela",
+      icon: "compost",
+      menu: "Registro Siembra Parcelas",
+    },
+    {
+      link: "/Registro-siembra-parcela",
+      icon: "hive",
+      menu: "Registro Tipos de Uvas",
+    },
+    
   ]
 
 }

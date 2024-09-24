@@ -16,6 +16,7 @@ import { ComponentsModule } from './components/components.module';
 import { ChildrenModule } from './views/childrens/children.module';
 import { ControlTierraModule } from './views/control-tierra/control-tierra.module';
 import { ParcelaModule } from './views/parcelas/parcela.module';
+import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ParcelaModule } from './views/parcelas/parcela.module';
     FormsModule,
     ChildrenModule,
     ControlTierraModule,
-    ParcelaModule
+    ParcelaModule,
+    ControlProduccionVinosModule
   ],
   providers: [],
   bootstrap: [AppComponent]

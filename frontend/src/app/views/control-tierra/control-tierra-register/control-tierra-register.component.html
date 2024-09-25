@@ -1,64 +1,65 @@
-<div class="card">
-  <div class="card-body">
-    <h4 class="mb-32">Registro de Control de Tierra</h4>
-    <form>
+<!-- Daily Activity -->
+<div class="card styled-card">
+  <div class="card-header styled-card-header">
+    <h4 class="styled-title">Registro de Control de Tierra</h4>
+  </div>
+  <div class="card-body styled-card-body">
+    <form class="styled-form" (ngSubmit)="registrarControl()">
       <!-- Selector de Parcela con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>Parcela</mat-label>
-        <mat-icon matPrefix>landslide</mat-icon> <!-- Icono  -->
-        <mat-select>
+        <mat-icon matPrefix color="action">area_chart</mat-icon>
+        <mat-select [(ngModel)]="parcelaSeleccionada" name="parcela" required>
           <mat-option *ngFor="let parcela of parcelas" [value]="parcela">{{ parcela }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Selector de Tipo de Uva con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>Tipo de Uva</mat-label>
-        <mat-icon matPrefix>hive</mat-icon> <!-- Icono de uvas -->
-        <mat-select>
+        <mat-icon matPrefix color="action">hive</mat-icon>
+        <mat-select [(ngModel)]="tipoUvaSeleccionado" name="tipoUva" required>
           <mat-option *ngFor="let tipoUva of tiposUva" [value]="tipoUva">{{ tipoUva }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Niveles de Nutrientes con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>Niveles de Nutrientes (N, P, K)</mat-label>
-        <mat-icon matPrefix>insert_chart</mat-icon> <!-- Icono de niveles -->
-        <input matInput type="text" placeholder="Ej: N: 20, P: 15, K: 10">
+        <mat-icon matPrefix>insert_chart</mat-icon>
+        <input matInput type="text" placeholder="Ej: N: 20, P: 15, K: 10" [(ngModel)]="nivelesNutrientes" name="nivelesNutrientes" required>
       </mat-form-field>
 
       <!-- PH del Suelo con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>PH del Suelo</mat-label>
-        <mat-icon matPrefix>water_drop</mat-icon> <!-- Icono de gota de agua -->
-        <input matInput type="number" placeholder="Ej: 6.5">
+        <mat-icon matPrefix>water_drop</mat-icon>
+        <input matInput type="number" placeholder="Ej: 6.5" [(ngModel)]="phSuelo" name="phSuelo" required>
       </mat-form-field>
 
       <!-- Tratamientos Aplicados con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>Tratamientos Aplicados</mat-label>
-        <mat-icon matPrefix>spa</mat-icon> <!-- Icono de tratamiento -->
-        <textarea matInput rows="3" placeholder="Ej: Fertilizante A, Pesticida B"></textarea>
+        <mat-icon matPrefix>spa</mat-icon>
+        <textarea matInput rows="3" placeholder="Ej: Fertilizante A, Pesticida B" [(ngModel)]="tratamientosAplicados" name="tratamientosAplicados" required></textarea>
       </mat-form-field>
 
       <!-- Fecha de Control con Icono -->
-      <mat-form-field class="w-100 fs-16" appearance="outline">
+      <mat-form-field class="form-field">
         <mat-label>Fecha de Control</mat-label>
-        <mat-icon matPrefix>calendar_today</mat-icon> <!-- Icono de calendario -->
-        <input matInput [matDatepicker]="picker">
+        <mat-icon matPrefix>calendar_today</mat-icon>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fechaControl" name="fechaControl" required>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <!-- Botones -->
-      <div style="display: flex; justify-content: center; gap: 16px;">
+      <div class="button-group">
         <button mat-flat-button color="primary" type="submit">
-          <mat-icon>save</mat-icon> <!-- Icono de guardar -->
-          Crear Registro
+          <mat-icon>save</mat-icon> Crear Registro
         </button>
-        <button mat-flat-button color="accent" type="button">
-          <mat-icon>cancel</mat-icon> <!-- Icono de cancelar -->
-          Cancelar
+        <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
+          <mat-icon>cancel</mat-icon> Cancelar
         </button>
       </div>
     </form>

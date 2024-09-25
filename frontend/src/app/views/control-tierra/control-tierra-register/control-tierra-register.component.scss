@@ -8,20 +8,32 @@ form-row {
   min-width: 0; 
 }
 .styled-card {
-  max-width: 800px; /* Tamaño reducido */
-  margin: 0 auto; /* Centrar la tarjeta */
-  border-radius: 6px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  background-color: #f9f9f9;
-  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px; /* Bordes redondeados */
+  max-width: 700px; /* Ancho máximo para el card */
+  margin: 20px auto; /* Centrando el card con margen automático */
+  padding: 20px; /* Relleno interno */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para hover */
+
+}
+/* Efecto hover para el card */
+.styled-card:hover {
+  transform: translateY(-5px); /* Efecto de levitación en hover */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
 }
 
-/* Estilo para el header del card */
+/* Estilo del header */
 .styled-card-header {
-  background: linear-gradient(45deg, #9ee7ec, #9ee7ec);
-  padding: 6px;
-  border-radius: 10px 10px 0 0;
-  text-align: center;
+  background-color: #22c1d6; /* Fondo azul suave */
+  color: white; /* Texto blanco */
+  padding: 10px;
+  text-align: center; /* Centrado del título */
+  border-radius: 10px 10px 0 0; /* Bordes superiores redondeados */
+}
+/* Estilo del contenido del card */
+.styled-card-body {
+  padding: 20px;
 }
 
 .styled-title {
@@ -33,63 +45,47 @@ form-row {
   letter-spacing: 2px; /* Espaciado entre letras */
 }
 
-/* Estilo de la tarjeta interna */
-.styled-card-body {
-  padding: 24px;
-  background-color: #f8f8f6;
-  border-radius: 0 0 16px 16px;
-}
-
-/* Estilo de los mat-icons según su función */
-.mat-form-field .icon-nutrientes {
-  color: #4caf50; /* Verde */
-}
-
-.mat-form-field .icon-ph {
-  color: #2196f3; /* Azul */
-}
-
-.mat-form-field .icon-tratamientos {
-  color: #ff9800; /* Naranja */
-}
-
-.mat-form-field .icon-fecha {
-  color: #f44336; /* Rojo */
-}
-
-/* Estilo de los campos del formulario */
+/* Estilos de los campos de formulario */
 .mat-form-field {
-  margin-bottom: 24px;
-  color: #666;
+  width: 100%; /* Campos del formulario ocupan el ancho completo */
+  margin-bottom: 20px; /* Espacio entre los campos */
+}
+/* Grupo de botones */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 /* Estilo de los botones */
+button[mat-flat-button] {
+  padding: 10px 20px;
+  border-radius: 5px; /* Bordes redondeados para los botones */
+}
+
+/* Color personalizado para el botón guardar */
+button[mat-flat-button][color="primary"] {
+  background-color: #22c1d6;
+  color: white;
+}
+
+button[mat-flat-button][color="primary"]:hover {
+  background-color: #45a049; /* Color más oscuro en hover */
+}
+
+/* Estilo para el botón cancelar */
+button[mat-flat-button][color="warn"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button[mat-flat-button][color="warn"]:hover {
+  background-color: #d32f2f; /* Color más oscuro en hover */
+}
 .button-group {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
-
-}
-
-button {
-  font-weight: bold;
-  padding: 12px 24px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  filter: brightness(1.1);
-}
-
-/* Colores de los botones */
-button[color="primary"] {
-  background-color: #11a4d1; /* Azul oscuro */
-  color: white;
-  
-}
-
-button[color="warn"] {
-  background-color: #f44336; /* Rojo */
-  color: white;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente si es necesario */
+  gap: 16px; /* Espacio entre los botones */
+  margin-top: 20px; /* Separación con los campos anteriores */
 }

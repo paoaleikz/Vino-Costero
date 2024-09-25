@@ -29,20 +29,21 @@ export class FullComponent {
   routerActive: string = "activelink";
 
   sidebarMenu: sidebarMenu[] = [
-    {
-      link: "/tierra",
-      icon: "landscape",
-      menu: "Registro Tierras",
-    },
+  
     {
       link: "/parcela",
       icon: "perm_media",
       menu: "Parcelas",
     },
     {
-      link: "/control-produccion-vinos",
-      icon: "liquor",
-      menu: "Control Produccion Vinos",
+      link: "/tierra",
+      icon: "landscape",
+      menu: "Registro Tierras",
+    },
+    {
+      link: "/Registro-siembra-parcela",
+      icon: "hive",
+      menu: "Registro Tipos de Uvas",
     },
     {
       link: "/Registro-siembra-parcela",
@@ -50,10 +51,12 @@ export class FullComponent {
       menu: "Registro Siembra Parcelas",
     },
     {
-      link: "/Registro-siembra-parcela",
-      icon: "hive",
-      menu: "Registro Tipos de Uvas",
+      link: "/control-produccion-vinos",
+      icon: "liquor",
+      menu: "Control Produccion Vinos",
     },
+   
+    
     
   ]
 

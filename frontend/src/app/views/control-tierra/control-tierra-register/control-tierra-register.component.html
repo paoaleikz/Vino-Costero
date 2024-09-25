@@ -1,11 +1,12 @@
-<!-- Daily Activity -->
+<!-- Registro de Control de Tierra -->
 <div class="card styled-card">
   <div class="card-header styled-card-header">
     <h4 class="styled-title">Registro de Control de Tierra</h4>
   </div>
   <div class="card-body styled-card-body">
     <form class="styled-form" (ngSubmit)="registrarControl()">
-      <!-- Selector de Parcela con Icono -->
+      
+      <!-- Selector de Parcela -->
       <mat-form-field class="form-field">
         <mat-label>Parcela</mat-label>
         <mat-icon matPrefix color="action">area_chart</mat-icon>
@@ -14,7 +15,7 @@
         </mat-select>
       </mat-form-field>
 
-      <!-- Selector de Tipo de Uva con Icono -->
+      <!-- Selector de Tipo de Uva -->
       <mat-form-field class="form-field">
         <mat-label>Tipo de Uva</mat-label>
         <mat-icon matPrefix color="action">hive</mat-icon>
@@ -23,28 +24,28 @@
         </mat-select>
       </mat-form-field>
 
-      <!-- Niveles de Nutrientes con Icono -->
+      <!-- Niveles de Nutrientes -->
       <mat-form-field class="form-field">
         <mat-label>Niveles de Nutrientes (N, P, K)</mat-label>
         <mat-icon matPrefix>insert_chart</mat-icon>
         <input matInput type="text" placeholder="Ej: N: 20, P: 15, K: 10" [(ngModel)]="nivelesNutrientes" name="nivelesNutrientes" required>
       </mat-form-field>
 
-      <!-- PH del Suelo con Icono -->
+      <!-- PH del Suelo -->
       <mat-form-field class="form-field">
-        <mat-label>PH del Suelo</mat-label>
+        <mat-label>PH del Suelo</mat-label> <!-- Aquí se corrige -->
         <mat-icon matPrefix>water_drop</mat-icon>
         <input matInput type="number" placeholder="Ej: 6.5" [(ngModel)]="phSuelo" name="phSuelo" required>
       </mat-form-field>
 
-      <!-- Tratamientos Aplicados con Icono -->
+      <!-- Tratamientos Aplicados -->
       <mat-form-field class="form-field">
         <mat-label>Tratamientos Aplicados</mat-label>
         <mat-icon matPrefix>spa</mat-icon>
         <textarea matInput rows="3" placeholder="Ej: Fertilizante A, Pesticida B" [(ngModel)]="tratamientosAplicados" name="tratamientosAplicados" required></textarea>
       </mat-form-field>
 
-      <!-- Fecha de Control con Icono -->
+      <!-- Fecha de Control -->
       <mat-form-field class="form-field">
         <mat-label>Fecha de Control</mat-label>
         <mat-icon matPrefix>calendar_today</mat-icon>
@@ -65,3 +66,4 @@
     </form>
   </div>
 </div>
+

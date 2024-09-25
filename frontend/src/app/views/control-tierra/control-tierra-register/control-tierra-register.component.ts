@@ -9,14 +9,13 @@ import { Router } from '@angular/router';
 })
 export class ControlTierraRegisterComponent implements OnInit {
   
-  checked = true;
-  
-  constructor(private _router: Router,) { }
-
-  ngOnInit(): void {}
-
-  onBack(): void {
-    this._router.navigate(['/tierra']);
-  }
+   // Datos simulados
+   parcelas: string[] = ['Parcela 1', 'Parcela 2', 'Parcela 3', 'Parcela 4'];
+   tiposUva: string[] = ['Cabernet Sauvignon', 'Merlot', 'Pinot Noir', 'Chardonnay','Monastrell','Garnacha'];
+ 
+   constructor() { }
+ 
+   ngOnInit(): void {
+   }
 
 }

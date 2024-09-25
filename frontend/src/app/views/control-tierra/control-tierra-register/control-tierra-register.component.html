@@ -1,51 +1,66 @@
-<!-- Form Layout -->
 <div class="card">
   <div class="card-body">
-    <h4 class="mb-32">Registro de control de Tierra</h4>
+    <h4 class="mb-32">Registro de Control de Tierra</h4>
     <form>
+      <!-- Selector de Parcela con Icono -->
       <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Nombre y Apellido</mat-label>
-        <input matInput type="text" placeholder="Enter your Name">
+        <mat-label>Parcela</mat-label>
+        <mat-icon matPrefix>landslide</mat-icon> <!-- Icono  -->
+        <mat-select>
+          <mat-option *ngFor="let parcela of parcelas" [value]="parcela">{{ parcela }}</mat-option>
+        </mat-select>
       </mat-form-field>
 
-      <div class="form-row">
-        <mat-form-field class="form-field fs-16" appearance="outline">
-          <mat-label>Peso</mat-label>
-          <input matInput type="text" placeholder="Enter your email">
-        </mat-form-field>
-    
-        <mat-form-field class="form-field fs-16" appearance="outline">
-          <mat-label>Talla</mat-label>
-          <input matInput type="text" placeholder="Enter your email">
-        </mat-form-field>
-      </div>
-
+      <!-- Selector de Tipo de Uva con Icono -->
       <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Fecha Nacimiento</mat-label>
-        <input matInput  [matDatepicker]="picker">
+        <mat-label>Tipo de Uva</mat-label>
+        <mat-icon matPrefix>hive</mat-icon> <!-- Icono de uvas -->
+        <mat-select>
+          <mat-option *ngFor="let tipoUva of tiposUva" [value]="tipoUva">{{ tipoUva }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Niveles de Nutrientes con Icono -->
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Niveles de Nutrientes (N, P, K)</mat-label>
+        <mat-icon matPrefix>insert_chart</mat-icon> <!-- Icono de niveles -->
+        <input matInput type="text" placeholder="Ej: N: 20, P: 15, K: 10">
+      </mat-form-field>
+
+      <!-- PH del Suelo con Icono -->
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>PH del Suelo</mat-label>
+        <mat-icon matPrefix>water_drop</mat-icon> <!-- Icono de gota de agua -->
+        <input matInput type="number" placeholder="Ej: 6.5">
+      </mat-form-field>
+
+      <!-- Tratamientos Aplicados con Icono -->
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Tratamientos Aplicados</mat-label>
+        <mat-icon matPrefix>spa</mat-icon> <!-- Icono de tratamiento -->
+        <textarea matInput rows="3" placeholder="Ej: Fertilizante A, Pesticida B"></textarea>
+      </mat-form-field>
+
+      <!-- Fecha de Control con Icono -->
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Fecha de Control</mat-label>
+        <mat-icon matPrefix>calendar_today</mat-icon> <!-- Icono de calendario -->
+        <input matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
-        <mat-label class="text-secondary">Genero</mat-label>
-        <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Femenio</mat-radio-button>
-        <mat-radio-button value="2" class="mt-8 mb-16 d-block">Masculino</mat-radio-button>
-      </mat-radio-group>
-
-
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Observaciones</mat-label>
-        <textarea matInput rows="3" placeholder="Write your message"></textarea>
-      </mat-form-field>
-
-
-      <div style="display: flex; justify-content: center;  gap: 16px;">
-
-        <button mat-flat-button color="primary" (click)="onBack()" type="submit">Crear Registro</button>
-        <button mat-flat-button color="accent" (click)="onBack()" type="submit">Cancelar</button>
+      <!-- Botones -->
+      <div style="display: flex; justify-content: center; gap: 16px;">
+        <button mat-flat-button color="primary" type="submit">
+          <mat-icon>save</mat-icon> <!-- Icono de guardar -->
+          Crear Registro
+        </button>
+        <button mat-flat-button color="accent" type="button">
+          <mat-icon>cancel</mat-icon> <!-- Icono de cancelar -->
+          Cancelar
+        </button>
       </div>
     </form>
   </div>
 </div>
-

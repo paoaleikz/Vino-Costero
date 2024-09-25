@@ -11,22 +11,29 @@ import { FullComponent } from './layouts/full/full.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:FullComponent,
+    path: "",
+    component: FullComponent,
     children: [
-      {path:"", redirectTo:"/home", pathMatch:"full"},
-      {path:"home", component:DashboardComponent},
-      {path:"tierra", component:ControlTierraListComponent},
-      {path:"tierra/register", component:ControlTierraRegisterComponent}, 
-      {path:"parcela", component:ParcelaListComponent},
-      {path:"parcela/register", component:ParcelaRegisterComponent},
-      {path:"control-produccion-vinos", component:ControlProduccionVinosListComponent},
-      {path:"control-produccion-vinos/register", component:ControlProduccionVinosRegisterComponent}
-     ]
+      { path: "", redirectTo: "/home", pathMatch: "full" },
+      { path: "home", component: DashboardComponent },
+
+      // Rutas para Control de Tierra (listado y registro)
+      { path: "tierra", component: ControlTierraListComponent },               // Lista de controles
+      { path: "tierra/register", component: ControlTierraRegisterComponent },  // Formulario de registro
+
+      // Rutas para las parcelas (listado y registro)
+      { path: "parcela", component: ParcelaListComponent },
+      { path: "parcela/register", component: ParcelaRegisterComponent },
+
+      // Rutas para el Control de Producción de Vinos (listado y registro)
+      { path: "control-produccion-vinos", component: ControlProduccionVinosListComponent },
+      { path: "control-produccion-vinos/register", component: ControlProduccionVinosRegisterComponent }
+    ]
   },
 
-  {path:"", redirectTo:"/home", pathMatch:"full"},
-  {path:"**", redirectTo:"/home", pathMatch:"full"},
+  // Rutas por defecto y de manejo de errores
+  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "**", redirectTo: "/home", pathMatch: "full" },  // Manejo de rutas no encontradas
 ];
 
 @NgModule({
@@ -34,3 +41,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

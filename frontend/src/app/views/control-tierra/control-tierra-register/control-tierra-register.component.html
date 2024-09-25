@@ -54,7 +54,8 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <!-- Botones -->
+ 
+      <!-- Botón para ver el historial de control -->
       <div class="button-group">
         <button mat-flat-button color="primary" type="submit">
           <mat-icon>save</mat-icon> Crear Registro
@@ -62,6 +63,9 @@
         <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
           <mat-icon>cancel</mat-icon> Cancelar
         </button>
+        <button mat-flat-button color="accent"  (click)="goToHistorial()">
+          <mat-icon>history</mat-icon> Ver Historial
+        </button>        
       </div>
     </form>
   </div>

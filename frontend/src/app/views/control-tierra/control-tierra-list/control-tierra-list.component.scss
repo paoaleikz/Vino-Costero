@@ -1,22 +1,52 @@
-.table-responsive {
-    overflow-x: auto;
-  }
-  
-  td.mat-cell {
-    padding: 16px;
-  }
-  
-  th.mat-header-cell:first-of-type,
-  td.mat-cell:first-of-type,
-  td.mat-footer-cell:first-of-type {
-    padding: 16px;
-  }
-  
-  th.mat-header-cell {
-    padding: 16px;
-  }
-  
-  .mat-header-cell {
-    font-size: 14px;
-  }
-  
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.table-container {
+  padding: 16px; // Espacio alrededor de la tabla
+  background-color: #f5f5f5; // Fondo gris claro
+  border-radius: 8px; // Bordes redondeados
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Sombra suave
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Centra horizontalmente
+  margin: 20px; // Margen alrededor del contenedor
+}
+.table-title {
+  margin-bottom: 20px; // Espacio entre el título y la tabla
+  font-size: 24px; // Tamaño de fuente del título
+  font-weight: bold; // Negrita para el título
+  color: #3f51b5; // Cambia a un color que prefieras
+}
+
+.header-cell {
+  background-color: #1976d2; // Color de fondo para el encabezado
+  color: white; // Color de texto blanco
+  font-weight: bold; // Texto en negrita
+}
+
+.cell {
+  padding: 16px; // Espaciado interno
+}
+
+.row:nth-child(odd) {
+  background-color: #e3f2fd; // Color de fondo para filas impares
+}
+
+.row:nth-child(even) {
+  background-color: #ffffff; // Color de fondo para filas pares
+}
+
+.mat-table {
+  width: 100%; // Ancho completo de la tabla
+  border-collapse: collapse; // Quitar espacios entre celdas
+}
+table {
+  width: 100%; // Asegúrate de que la tabla ocupe todo el ancho
+}
+
+.mat-header-cell {
+  font-weight: bold; // Opcional: Estilo para las celdas de encabezado
+  background-color: #f5f5f5; // Cambia el color del fondo del encabezado
+}
+
+.cell {
+  padding: 16px; // Opcional: Estilo para las celdas
+}

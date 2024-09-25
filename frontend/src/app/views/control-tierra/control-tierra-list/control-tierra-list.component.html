@@ -1,56 +1,41 @@
-<!-- Daily Activity -->
-<mat-card class="w-100">
-  <mat-card-content>
-    <h4 class="mb-56">Control de Tierra</h4>
+<div class="table-container">
+  <h2 class="table-title">Historial de Control de Tierra</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <div class="table-responsive">
-      <table mat-table [dataSource]="dataSource" class="text-nowrap w-100">
+    <ng-container matColumnDef="parcela">
+      <th mat-header-cell *matHeaderCellDef> Parcela </th>
+      <td mat-cell *matCellDef="let element"> {{ element.parcela }} </td>
+    </ng-container>
 
-        <!-- Id Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell class="fw-medium" *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
+    <ng-container matColumnDef="tipoUva">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Uva </th>
+      <td mat-cell *matCellDef="let element"> {{ element.tipoUva }} </td>
+    </ng-container>
 
-        <!-- Assigned Column -->
-        <ng-container matColumnDef="assigned">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let element">
-            <p class="mb-0 fw-medium">{{ element.name }}</p>
-            <p class="mb-0 fw-normal op-5">{{ element.work }}</p>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="nivelesNutrientes">
+      <th mat-header-cell *matHeaderCellDef> Niveles de Nutrientes </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nivelesNutrientes }} </td>
+    </ng-container>
 
-        <!-- Project Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Estado </th>
-          <td mat-cell *matCellDef="let element">
-            <p class="mb-0 fw-medium op-5">{{element.project}}</p>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="phSuelo">
+      <th mat-header-cell *matHeaderCellDef> pH del Suelo </th>
+      <td mat-cell *matCellDef="let element"> {{ element.phSuelo }} </td>
+    </ng-container>
 
-        <!-- Priority Column -->
-        <ng-container matColumnDef="priority">
-          <th mat-header-cell *matHeaderCellDef> Priority </th>
-          <td mat-cell *matCellDef="let element">
-            <span class="badge {{element.badge}} rounded-pill"  (click)="getInfo()">{{element.priority}}</span>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="tratamientosAplicados">
+      <th mat-header-cell *matHeaderCellDef> Tratamientos Aplicados </th>
+      <td mat-cell *matCellDef="let element"> {{ element.tratamientosAplicados }} </td>
+    </ng-container>
 
-        <!-- Budget Column -->
-        <ng-container matColumnDef="budget">
-          <th mat-header-cell *matHeaderCellDef> Budget </th>
-          <td mat-cell *matCellDef="let element">
-            <p class="mb-0 fw-medium">{{element.budget}}</p>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="fechaControl">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Control </th>
+      <td mat-cell *matCellDef="let element"> {{ element.fechaControl | date }} </td>
+    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-  </mat-card-content>
-</mat-card>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
 
 <app-float-button
   icon="add_circle" 

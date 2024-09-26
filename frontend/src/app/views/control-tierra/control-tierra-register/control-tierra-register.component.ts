@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { HistorialControlService } from '../historial-control.service'
 import { Router } from '@angular/router';
+
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-control-tierra-register',
   styleUrls: ['./control-tierra-register.component.scss'],

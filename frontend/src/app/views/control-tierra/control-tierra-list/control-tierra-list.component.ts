@@ -13,12 +13,15 @@ export class ControlTierraListComponent implements OnInit {
   filteredHistorial: any[] = [];
   parcelaFilter: string = '';
   tipoUvaFilter: string = '';
+  tiposUva: string[] = ['Cabernet Sauvignon', 'Merlot', 'Chardonnay']; // Define tus tipos de uva
+  parcelas: string[] = ['Parcela 1', 'Parcela 2', 'Parcela 3']; // Define tus parcelas
 
   constructor(private router: Router, private historialControlService: HistorialControlService) {}
 
   ngOnInit(): void {
-    this.historial = this.historialControlService.obtenerHistorial();
-    this.filteredHistorial = this.historial; // Inicialmente muestra todo el historial
+    // Cargar el historial desde el servicio de forma asíncrona
+    this.historial=this.historialControlService.obtenerHistorial();
+    this.filteredHistorial = this.historial; // Inicialmente mostrar todo el historial
   }
 
   aplicarFiltro(): void {
@@ -27,6 +30,7 @@ export class ControlTierraListComponent implements OnInit {
              (this.tipoUvaFilter ? item.tipoUva.includes(this.tipoUvaFilter) : true);
     });
   }
+
   handleAddClick(): void {
     this.router.navigate(['/tierra/register']);
   }

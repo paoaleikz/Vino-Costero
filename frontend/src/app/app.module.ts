@@ -17,6 +17,7 @@ import { ControlTierraModule } from './views/control-tierra/control-tierra.modul
 import { ParcelaModule } from './views/parcelas/parcela.module';
 import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

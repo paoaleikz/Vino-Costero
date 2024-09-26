@@ -1,3 +1,4 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 form-row {
   display: flex;
   gap: 16px; 
@@ -88,4 +89,19 @@ button[mat-flat-button][color="warn"]:hover {
   align-items: center; /* Centra verticalmente si es necesario */
   gap: 16px; /* Espacio entre los botones */
   margin-top: 20px; /* Separación con los campos anteriores */
+}
+.mat-error {
+  color: red; // Cambia el color del mensaje de error
+  font-size: 12px; // Ajusta el tamaño de la fuente
+}
+/* Estilo para los mensajes de éxito */
+.success-snackbar {
+  background-color: #4caf50;  /* Color verde para éxito */
+  color: white;
+}
+
+/* Estilo para los mensajes de error */
+.error-snackbar {
+  background-color: #f44336;  /* Color rojo para error */
+  color: white;
 }

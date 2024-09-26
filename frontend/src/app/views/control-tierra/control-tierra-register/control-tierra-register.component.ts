@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { HistorialControlService } from '../historial-control.service'
 import { Router } from '@angular/router';
-
 import { MatTableDataSource } from '@angular/material/table';
-
 @Component({
   selector: 'app-control-tierra-register',
   styleUrls: ['./control-tierra-register.component.scss'],
@@ -16,11 +14,11 @@ export class ControlTierraRegisterComponent {
   phSuelo: number | null = null; // Inicializar con null
   tratamientosAplicados: string = ''; // Inicializar con valor vacío
   fechaControl: Date | null = null; // Inicializar con null
-  tiposUva: string[] = ['Cabernet Sauvignon', 'Merlot', 'Chardonnay']; // Define tus tipos de uva
-  parcelas: string[] = ['Parcela 1', 'Parcela 2', 'Parcela 3']; // Define tus parcelas
-
+  tiposUva: string[] = ['Cabernet Sauvignon', 'Merlot', 'Chardonnay']; // Definiones de  tus tipos de uva
+  parcelas: string[] = ['Parcela 1', 'Parcela 2', 'Parcela 3','Parcela 4']; // Definiones de las parcelas
+  mensaje: string = ''; // Mensaje de éxito
   
-  constructor(private _service: HistorialControlService,private router: Router) {  // Inyectar Service
+  constructor(private _service: HistorialControlService,private router: Router,) {  // Inyectar Service
     
   }
   registrarControl() {
@@ -37,11 +35,12 @@ export class ControlTierraRegisterComponent {
 
       // Agregar el nuevo control a la lista (simulando una llamada a un servicio)
         this._service.agregarRegistro(nuevoControl);
-      // Limpiar el formulario después de registrar
-      this.limpiarFormulario();
-      
-   
-    } else {
+        // Simulación de guardar el registro
+    this.mensaje = "El registro ha sido creado con éxito."; // Mensaje de éxito
+
+    // Limpiar el formulario después de crear el registro
+    this.limpiarFormulario();
+  } else {
       console.error('Por favor, completa todos los campos.');
     }
   }

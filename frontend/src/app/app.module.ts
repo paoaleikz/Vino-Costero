@@ -16,12 +16,14 @@ import { ChildrenModule } from './views/childrens/children.module';
 import { ControlTierraModule } from './views/control-tierra/control-tierra.module';
 import { ParcelaModule } from './views/parcelas/parcela.module';
 import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { ControlProduccionVinosModule } from './views/control-produccion-vinos/c
     ChildrenModule,
     ControlTierraModule,
     ParcelaModule,
-    ControlProduccionVinosModule
+    ControlProduccionVinosModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

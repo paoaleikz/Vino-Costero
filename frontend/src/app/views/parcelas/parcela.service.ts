@@ -6,7 +6,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ParcelaService {
 
-  private parcelas: any[] = []; // Arreglo para almacenar las parcelas
+  private parcelas: any[] = [
+   { nombre: 'Parcela 1', 
+    tamano: '10', 
+    ubicacion: 'Valle de Aconcagua', 
+    tipoSuelo: 'Arenoso',
+   }
+
+  ]; // Arreglo para almacenar las parcelas
   private parcelasSubject: BehaviorSubject<any[]> = new BehaviorSubject(this.parcelas);
 
   constructor() {}

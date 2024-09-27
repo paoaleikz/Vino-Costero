@@ -11,9 +11,6 @@
         <mat-label>Nombre de la Parcela</mat-label>
         <mat-icon matPrefix>location_city</mat-icon>
         <input matInput [(ngModel)]="parcela.nombre" name="nombre" required>
-        <mat-error *ngIf="parcelaForm.form.controls['nombre']?.invalid && parcelaForm.form.controls['nombre']?.touched">
-          Nombre es obligatorio.
-        </mat-error>
       </mat-form-field>
 
       <!-- Tamaño de la Parcela -->
@@ -21,9 +18,6 @@
         <mat-label>Tamaño (en hectáreas)</mat-label>
         <mat-icon matPrefix>landscape</mat-icon>
         <input matInput [(ngModel)]="parcela.tamano" name="tamano" type="number" required>
-        <mat-error *ngIf="parcelaForm.form.controls['tamano']?.invalid && parcelaForm.form.controls['tamano']?.touched">
-          Tamaño es obligatorio.
-        </mat-error>
       </mat-form-field>
 
       <!-- Ubicación de la Parcela -->
@@ -31,9 +25,6 @@
         <mat-label>Ubicación</mat-label>
         <mat-icon matPrefix>map</mat-icon>
         <input matInput [(ngModel)]="parcela.ubicacion" name="ubicacion" required>
-        <mat-error *ngIf="parcelaForm.form.controls['ubicacion']?.invalid && parcelaForm.form.controls['ubicacion']?.touched">
-          Ubicación es obligatoria.
-        </mat-error>
       </mat-form-field>
 
       <!-- Tipo de Suelo -->
@@ -41,14 +32,11 @@
         <mat-label>Tipo de Suelo</mat-label>
         <mat-icon matPrefix>nature</mat-icon>
         <input matInput [(ngModel)]="parcela.tipoSuelo" name="tipoSuelo" required>
-        <mat-error *ngIf="parcelaForm.form.controls['tipoSuelo']?.invalid && parcelaForm.form.controls['tipoSuelo']?.touched">
-          Tipo de Suelo es obligatorio.
-        </mat-error>
       </mat-form-field>
 
       <!-- Botones para enviar o limpiar el formulario -->
       <div class="button-group">
-        <button mat-flat-button color="primary" type="submit" [disabled]="parcelaForm.form.invalid">
+        <button mat-flat-button color="primary" type="submit">
           <mat-icon>save</mat-icon> Registrar Parcela
         </button>
         <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">

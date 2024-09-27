@@ -9,7 +9,12 @@ import { Router } from '@angular/router'; // Asegúrate de importar Router si lo
 })
 export class ParcelaListComponent implements OnInit {
   parcelas: any[] = []; // Lista de parcelas
-  displayedColumns: string[] = ['nombre', 'tamano', 'ubicacion', 'tipoSuelo', 'acciones']; // Columnas a mostrar en la tabla
+  displayedColumns: string[] = [
+    'nombre', 
+    'tamano', 
+    'ubicacion', 
+    'tipoSuelo', 
+    'acciones']; // Columnas a mostrar en la tabla
 
   constructor(private parcelaService: ParcelaService, private router: Router) {} // Asegúrate de inyectar Router
 

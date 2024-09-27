@@ -18,13 +18,12 @@ export class ControlTierraRegisterComponent {
   parcelas: string[] = ['Parcela 1', 'Parcela 2', 'Parcela 3','Parcela 4']; // Definiones de las parcelas
   mensaje: string = ''; // Mensaje de éxito
   
-  constructor(private _service: HistorialControlService,private router: Router,) {  // Inyectar Service
+  constructor(private _service: HistorialControlService,private router: Router) {  // Inyectar Service
     
   }
 
- 
   registroExitoso: boolean = false; // Propiedad para controlar el mensaje de éxito
-  
+
   registrarControl() {
     if (this.parcelaSeleccionada && this.tipoUvaSeleccionado && this.nivelesNutrientes && this.phSuelo !== null && this.tratamientosAplicados && this.fechaControl) {
       // Crear un objeto para guardar el control

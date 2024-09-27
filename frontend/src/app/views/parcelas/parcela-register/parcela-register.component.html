@@ -1,51 +1,60 @@
-<!-- Form Layout -->
-<div class="card">
-  <div class="card-body">
-    <h4 class="mb-32">Registro de Parcelas</h4>
-    <form>
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Nombre y Apellido</mat-label>
-        <input matInput type="text" placeholder="Enter your Name">
+<!-- Registro de Parcela -->
+<div class="card styled-card">
+  <div class="card-header styled-card-header">
+    <h4 class="styled-title">Registrar Parcela</h4>
+  </div>
+  <div class="card-body styled-card-body">
+    <form (ngSubmit)="registrarParcela()" #parcelaForm="ngForm">
+
+      <!-- Nombre de la Parcela -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Nombre de la Parcela</mat-label>
+        <mat-icon matPrefix>location_city</mat-icon>
+        <input matInput [(ngModel)]="parcela.nombre" name="nombre" required>
+        <mat-error *ngIf="parcelaForm.form.controls['nombre']?.invalid && parcelaForm.form.controls['nombre']?.touched">
+          Nombre es obligatorio.
+        </mat-error>
       </mat-form-field>
 
-      <div class="form-row">
-        <mat-form-field class="form-field fs-16" appearance="outline">
-          <mat-label>Peso</mat-label>
-          <input matInput type="text" placeholder="Enter your email">
-        </mat-form-field>
-    
-        <mat-form-field class="form-field fs-16" appearance="outline">
-          <mat-label>Talla</mat-label>
-          <input matInput type="text" placeholder="Enter your email">
-        </mat-form-field>
-      </div>
-
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Fecha Nacimiento</mat-label>
-        <input matInput  [matDatepicker]="picker">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+      <!-- Tamaño de la Parcela -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Tamaño (en hectáreas)</mat-label>
+        <mat-icon matPrefix>landscape</mat-icon>
+        <input matInput [(ngModel)]="parcela.tamano" name="tamano" type="number" required>
+        <mat-error *ngIf="parcelaForm.form.controls['tamano']?.invalid && parcelaForm.form.controls['tamano']?.touched">
+          Tamaño es obligatorio.
+        </mat-error>
       </mat-form-field>
 
-      <mat-radio-group color="primary" class="fs-16" aria-label="Select an option">
-        <mat-label class="text-secondary">Genero</mat-label>
-        <mat-radio-button value="1" class="mt-8 mb-16 d-block" [checked]="checked">Femenio</mat-radio-button>
-        <mat-radio-button value="2" class="mt-8 mb-16 d-block">Masculino</mat-radio-button>
-      </mat-radio-group>
-
-
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Observaciones</mat-label>
-        <textarea matInput rows="3" placeholder="Write your message"></textarea>
+      <!-- Ubicación de la Parcela -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Ubicación</mat-label>
+        <mat-icon matPrefix>map</mat-icon>
+        <input matInput [(ngModel)]="parcela.ubicacion" name="ubicacion" required>
+        <mat-error *ngIf="parcelaForm.form.controls['ubicacion']?.invalid && parcelaForm.form.controls['ubicacion']?.touched">
+          Ubicación es obligatoria.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Tipo de Suelo -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Tipo de Suelo</mat-label>
+        <mat-icon matPrefix>nature</mat-icon>
+        <input matInput [(ngModel)]="parcela.tipoSuelo" name="tipoSuelo" required>
+        <mat-error *ngIf="parcelaForm.form.controls['tipoSuelo']?.invalid && parcelaForm.form.controls['tipoSuelo']?.touched">
+          Tipo de Suelo es obligatorio.
+        </mat-error>
+      </mat-form-field>
 
-      <div style="display: flex; justify-content: center;  gap: 16px;">
-
-        <button mat-flat-button color="primary" (click)="onBack()" type="submit">Crear Registro</button>
-        <button mat-flat-button color="accent" (click)="onBack()" type="submit">Cancelar</button>
+      <!-- Botones para enviar o limpiar el formulario -->
+      <div class="button-group">
+        <button mat-flat-button color="primary" type="submit" [disabled]="parcelaForm.form.invalid">
+          <mat-icon>save</mat-icon> Registrar Parcela
+        </button>
+        <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
+          <mat-icon>cancel</mat-icon> Cancelar
+        </button>
       </div>
     </form>
   </div>
 </div>
-

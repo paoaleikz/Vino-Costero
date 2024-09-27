@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' // Esto hace que el servicio esté disponible globalmente
@@ -33,6 +34,7 @@ export class HistorialControlService {
   ];
 
   constructor() {}
+    // Métodos para el historial de control de tierras
 
   agregarRegistro(registro: any): void {
     this.historial.push(registro);

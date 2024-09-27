@@ -69,15 +69,6 @@
 .cell {
   padding: 16px; // Espaciado interno
 }
-
-.row:nth-child(odd) {
-  background-color: #e3f2fd; // Color de fondo para filas impares
-}
-
-.row:nth-child(even) {
-  background-color: #ffffff; // Color de fondo para filas pares
-}
-
 .mat-table {
   width: 100%; // Ancho completo de la tabla
   border-collapse: collapse; // Quitar espacios entre celdas

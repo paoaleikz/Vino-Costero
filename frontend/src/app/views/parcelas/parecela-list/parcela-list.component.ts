@@ -1,23 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-export interface PeriodicElement {
-  id: number;
-  name: string;
-  work: string;
-  project: string;
-  priority: string;
-  badge: string;
-  budget: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, name: 'Deep Javiya', work: 'Frontend Devloper', project: 'Flexy Angular', priority: 'Low', badge: 'badge-info', budget: '$3.9k' },
-  { id: 2, name: 'Nirav Joshi', work: 'Project Manager', project: 'Hosting Press HTML', priority: 'Medium', badge: 'badge-primary', budget: '$24.5k' },
-  { id: 3, name: 'Sunil Joshi', work: 'Web Designer', project: 'Elite Admin', priority: 'High', badge: 'badge-danger', budget: '$12.8k' },
-  { id: 4, name: 'Maruti Makwana', work: 'Backend Devloper', project: 'Material Pro', priority: 'Critical', badge: 'badge-success', budget: '$2.4k' },
-];
-
+import { ParcelaService } from '../parcela.service';
+import { Router } from '@angular/router'; // Asegúrate de importar Router si lo necesitas
 
 @Component({
   selector: 'app-parcela-list',
@@ -25,19 +8,35 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./parcela-list.component.scss']
 })
 export class ParcelaListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'assigned', 'name', 'priority', 'budget'];
-  //displayedColumns = [];
-  dataSource = ELEMENT_DATA;
-  constructor(private _router: Router,) { }
+  parcelas: any[] = []; // Lista de parcelas
+  displayedColumns: string[] = ['nombre', 'tamano', 'ubicacion', 'tipoSuelo', 'acciones']; // Columnas a mostrar en la tabla
 
-  ngOnInit(): void {
+  constructor(private parcelaService: ParcelaService, private router: Router) {} // Asegúrate de inyectar Router
+
+  ngOnInit() {
+    this.obtenerParcelas(); // Llama al método para obtener las parcelas al inicializar el componente
   }
 
-  handleAddClick(): void {
-    this._router.navigate(['/parcela/register']);
-    // Implement your logic here
+  // Método para obtener las parcelas del servicio
+  obtenerParcelas() {
+    this.parcelaService.obtenerParcelas().subscribe(parcelas => {
+      this.parcelas = parcelas; // Asigna las parcelas obtenidas a la variable
+    });
   }
-  getInfo(): void {
-   // this._router.navigate(['/childrens/info']);
+
+  // Método para manejar el clic en agregar
+  handleAddClick() {
+    this.router.navigate(['/parcela/register']); // Cambia a la ruta del formulario de registro
   }
+  // Método para manejar el clic en editar
+  handleEditClick(id: number) {
+    this.router.navigate(['/parcela/edit', id]); // Cambia la ruta según tu configuración
+  }
+
+  // Método para eliminar una parcela
+  eliminarParcela(index: number) {
+    this.parcelaService.eliminarParcela(index); // Llama al servicio para eliminar la parcela por índice
+    this.obtenerParcelas(); // Vuelve a obtener la lista de parcelas después de eliminar
+  }
+  
 }

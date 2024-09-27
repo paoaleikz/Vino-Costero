@@ -16,7 +16,7 @@
 
     <!-- Filtro de tipo de uva (Combobox) -->
     <mat-form-field appearance="fill" class="filter-item uva-filter">
-      <mat-label> tipos de uva</mat-label>
+      <mat-label> Tipos de Uva</mat-label>
       <mat-select [(ngModel)]="tipoUvaFilter">
         <mat-option [value]="''">Sin seleccionar</mat-option> <!-- Opción de no seleccionar -->
         <mat-option *ngFor="let tipoUva of tiposUva" [value]="tipoUva">
@@ -26,44 +26,45 @@
     </mat-form-field>
 
     <!-- Botón Aplicar Filtro -->
-    <button mat-raised-button color="primary"(click)="aplicarFiltro()"style="width: 130px; height: 40px; padding: 6px 10px; 
+    <button mat-raised-button color="primary" (click)="aplicarFiltro()" style="width: 130px; height: 40px; padding: 6px 10px; 
     font-size: 16px; font-weight: bold; color: #FFFFFF;">Filtrar</button>
   </div>
+
   <!-- Tabla -->
-  <table mat-table [dataSource]="filteredHistorial" class="mat-elevation-z8">
+  <table mat-table [dataSource]="filteredHistorial" class="mat-elevation-z8 custom-table">
     <!-- Columna Parcela -->
     <ng-container matColumnDef="parcela">
-      <th mat-header-cell *matHeaderCellDef>Parcela</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">Parcela</th>
       <td mat-cell *matCellDef="let element">{{element.parcela}}</td>
     </ng-container>
 
     <!-- Columna Tipo de Uva -->
     <ng-container matColumnDef="tipoUva">
-      <th mat-header-cell *matHeaderCellDef>Tipo de Uva</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">Tipo de Uva</th>
       <td mat-cell *matCellDef="let element">{{element.tipoUva}}</td>
     </ng-container>
 
     <!-- Columna Niveles de Nutrientes -->
     <ng-container matColumnDef="nivelesNutrientes">
-      <th mat-header-cell *matHeaderCellDef>Niveles de Nutrientes</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">Niveles de Nutrientes</th>
       <td mat-cell *matCellDef="let element">{{element.nivelesNutrientes}}</td>
     </ng-container>
 
     <!-- Columna pH del Suelo -->
     <ng-container matColumnDef="phSuelo">
-      <th mat-header-cell *matHeaderCellDef>pH del Suelo</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">pH del Suelo</th>
       <td mat-cell *matCellDef="let element">{{element.phSuelo}}</td>
     </ng-container>
 
     <!-- Columna Tratamientos Aplicados -->
     <ng-container matColumnDef="tratamientosAplicados">
-      <th mat-header-cell *matHeaderCellDef>Tratamientos Aplicados</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">Tratamientos Aplicados</th>
       <td mat-cell *matCellDef="let element">{{element.tratamientosAplicados}}</td>
     </ng-container>
 
     <!-- Columna Fecha de Control -->
     <ng-container matColumnDef="fechaControl">
-      <th mat-header-cell *matHeaderCellDef>Fecha de Control</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header">Fecha de Control</th>
       <td mat-cell *matCellDef="let element">{{element.fechaControl | date}}</td>
     </ng-container>
 

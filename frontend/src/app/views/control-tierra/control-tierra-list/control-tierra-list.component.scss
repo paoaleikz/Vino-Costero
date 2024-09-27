@@ -94,3 +94,12 @@ table {
 .cell {
   padding: 18px; // Opcional: Estilo para las celdas
 }
+/* Clase personalizada para los encabezados de la tabla */
+.custom-header {
+  background-color: #096f76; /* Color de fondo azul */
+  color: #070606; /* Color del texto blanco */
+  font-weight: bold;
+  text-transform: uppercase; /* Texto en mayúsculas */
+  font-weight: 900; /* Negrita */
+}
+

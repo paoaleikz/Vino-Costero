@@ -21,6 +21,10 @@ export class ControlTierraRegisterComponent {
   constructor(private _service: HistorialControlService,private router: Router,) {  // Inyectar Service
     
   }
+
+ 
+  registroExitoso: boolean = false; // Propiedad para controlar el mensaje de éxito
+  
   registrarControl() {
     if (this.parcelaSeleccionada && this.tipoUvaSeleccionado && this.nivelesNutrientes && this.phSuelo !== null && this.tratamientosAplicados && this.fechaControl) {
       // Crear un objeto para guardar el control
@@ -36,13 +40,17 @@ export class ControlTierraRegisterComponent {
       // Agregar el nuevo control a la lista (simulando una llamada a un servicio)
         this._service.agregarRegistro(nuevoControl);
         // Simulación de guardar el registro
-    this.mensaje = "El registro ha sido creado con éxito."; // Mensaje de éxito
+        console.log('Registro creado con éxito.');
+       // Limpiar el formulario después de crear el registro
+          this.limpiarFormulario();
+           // Mostrar el mensaje de éxito
+    this.registroExitoso = true;
 
-    // Limpiar el formulario después de crear el registro
-    this.limpiarFormulario();
-  } else {
-      console.error('Por favor, completa todos los campos.');
-    }
+    // Ocultar el mensaje después de unos segundos (opcional)
+    setTimeout(() => {
+      this.registroExitoso = false;
+    }, 5000); // El mensaje desaparecerá después de 5 segundos
+  } 
   }
 
   limpiarFormulario() {

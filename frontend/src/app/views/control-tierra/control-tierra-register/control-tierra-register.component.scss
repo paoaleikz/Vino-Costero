@@ -99,9 +99,18 @@ button[mat-flat-button][color="warn"]:hover {
   background-color: #4caf50;  /* Color verde para éxito */
   color: white;
 }
+/* Estilo para el mensaje de éxito */
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #12cc15;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
 
-/* Estilo para los mensajes de error */
-.error-snackbar {
-  background-color: #f44336;  /* Color rojo para error */
-  color: white;
+.alert-success mat-icon {
+  margin-right: 8px;
 }

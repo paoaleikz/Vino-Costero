@@ -25,14 +25,6 @@
   .uva-filter {
     flex: 1; /* Ocupa todo el ancho disponible */
   }
-  .button-filtrar {
-    width: 80px; // Ajusta el tamaño del botón
-    height: 36px; // Ajusta la altura del botón
-    padding: 8px; // Espaciado interno
-    font-size: 14px; // Tamaño de fuente más pequeño
-    font-weight: bold; // Negrita para mayor visibilidad
-    margin-left: 8px; // Espacio entre el botón y los filtros
-  }
   .table-container {
     width: 100%;
     overflow-x: auto; /* Asegura que la tabla no se desborde en pantallas pequeñas */

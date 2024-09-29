@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { ChildrenModule } from './views/childrens/children.module';
 import { ControlTierraModule } from './views/control-tierra/control-tierra.module';
 import { ParcelaModule } from './views/parcelas/parcela.module';
+import { TipoUvaModule } from './views/tipo-uva/tipo-uva.module';
 import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -38,7 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ControlTierraModule,
     ParcelaModule,
     ControlProduccionVinosModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TipoUvaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

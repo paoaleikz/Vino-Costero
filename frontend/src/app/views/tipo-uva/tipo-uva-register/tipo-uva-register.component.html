@@ -1,0 +1,21 @@
+<div>
+  <h1>Registrar Tipo de Uva</h1>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="uva.nombre" name="nombre" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sabor</mat-label>
+      <input matInput [(ngModel)]="uva.sabor" name="sabor" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Uso</mat-label>
+      <input matInput [(ngModel)]="uva.uso" name="uso" required>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="guardarUva()">Guardar</button>
+  </form>
+</div>

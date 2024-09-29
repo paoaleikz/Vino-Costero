@@ -23,7 +23,7 @@ export class ParcelaRegisterComponent {
       this.parcelaService.agregarParcela(this.parcela); // Llama al servicio para agregar la parcela
 
       // Muestra el mensaje de éxito usando MatSnackBar
-      this.snackBar.open('Parcela registrada exitosamente', 'Cerrar', {
+      this.snackBar.open('Parcela registrada exitosamente', '', {
         duration: 3000, // El mensaje desaparecerá después de 3 segundos
       });
 
@@ -31,12 +31,11 @@ export class ParcelaRegisterComponent {
       this.router.navigate(['/parcela']);
     } else {
       // Muestra un mensaje de error si faltan campos
-      this.snackBar.open('Por favor, completa todos los campos.', 'Cerrar', {
+      this.snackBar.open('Por favor, completa todos los campos.', '', {
         duration: 3000,
       });
     }
   }
-
   // Método para limpiar el formulario (opcional)
   limpiarFormulario() {
     this.parcela = { nombre: '', tamano: '', ubicacion: '', tipoSuelo: '' }; // Resetea el objeto parcela

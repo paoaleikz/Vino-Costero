@@ -41,7 +41,7 @@ export class FullComponent {
       menu: "Registro Tierras",
     },
     {
-      link: "/Registro-siembra-parcela",
+      link: "/tipoUvas",
       icon: "hive",
       menu: "Registro Tipos de Uvas",
     },

@@ -11,7 +11,15 @@ export class ParcelaService {
     tamano: '10', 
     ubicacion: 'Valle de Aconcagua', 
     tipoSuelo: 'Arenoso',
+    
+   },
+   { nombre: 'Parcela 2', 
+    tamano: '20', 
+    ubicacion: 'Valle del sol', 
+    tipoSuelo: 'monte',
+    
    }
+   
 
   ]; // Arreglo para almacenar las parcelas
   private parcelasSubject: BehaviorSubject<any[]> = new BehaviorSubject(this.parcelas);

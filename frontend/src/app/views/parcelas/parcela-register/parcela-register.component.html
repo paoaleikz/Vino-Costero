@@ -1,7 +1,7 @@
 <!-- Registro de Parcela -->
 <div class="card styled-card">
   <div class="card-header styled-card-header">
-    <h4 class="styled-title">Registrar Parcela</h4>
+    <h4 class="styled-title">{{ isEditing ? 'Editar Parcela' : 'Registrar Parcela' }}</h4>
   </div>
   <div class="card-body styled-card-body">
     <form (ngSubmit)="registrarParcela()" #parcelaForm="ngForm">
@@ -37,7 +37,7 @@
       <!-- Botones para enviar o limpiar el formulario -->
       <div class="button-group">
         <button mat-flat-button color="primary" type="submit">
-          <mat-icon>save</mat-icon> Registrar Parcela
+          <mat-icon>save</mat-icon> {{ isEditing ? 'Actualizar Parcela' : 'Registrar Parcela' }}
         </button>
         <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
           <mat-icon>cancel</mat-icon> Cancelar

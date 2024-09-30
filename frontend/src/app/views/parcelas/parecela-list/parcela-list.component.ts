@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ParcelaService } from '../parcela.service';
-import { Router } from '@angular/router'; // Asegúrate de importar Router si lo necesitas
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-parcela-list',
@@ -8,40 +9,32 @@ import { Router } from '@angular/router'; // Asegúrate de importar Router si lo
   styleUrls: ['./parcela-list.component.scss']
 })
 export class ParcelaListComponent implements OnInit {
-  parcelas: any[] = []; // Lista de parcelas
-  displayedColumns: string[] = [
-    'nombre', 
-    'tamano', 
-    'ubicacion', 
-    'tipoSuelo', 
-    'acciones']; // Columnas a mostrar en la tabla
+  parcelas: any[] = [];
+  displayedColumns: string[] = ['nombre', 'tamano', 'ubicacion', 'tipoSuelo', 'acciones'];
 
-  constructor(private parcelaService: ParcelaService, private router: Router) {} // Asegúrate de inyectar Router
+  constructor(private parcelaService: ParcelaService, private router: Router, private snackBar: MatSnackBar) {}
 
-  ngOnInit() {
-    this.obtenerParcelas(); // Llama al método para obtener las parcelas al inicializar el componente
-  }
-
-  // Método para obtener las parcelas del servicio
-  obtenerParcelas() {
+  ngOnInit(): void {
     this.parcelaService.obtenerParcelas().subscribe(parcelas => {
-      this.parcelas = parcelas; // Asigna las parcelas obtenidas a la variable
+      this.parcelas = parcelas;
     });
   }
 
-  // Método para manejar el clic en agregar
-  handleAddClick() {
-    this.router.navigate(['/parcela/register']); // Cambia a la ruta del formulario de registro
-  }
-  // Método para manejar el clic en editar
-  handleEditClick(id: number) {
-    this.router.navigate(['/parcela/edit', id]); // Cambia la ruta según tu configuración
+  eliminarParcela(id: number): void {
+    this.parcelaService.eliminarParcela(id);
+    this.snackBar.open('Parcela eliminada con éxito', '', { duration: 3000 });
+    // Actualiza la lista después de eliminar
+    this.parcelaService.obtenerParcelas().subscribe(parcelas => {
+      this.parcelas = parcelas;
+    });
   }
 
-  // Método para eliminar una parcela
-  eliminarParcela(index: number) {
-    this.parcelaService.eliminarParcela(index); // Llama al servicio para eliminar la parcela por índice
-    this.obtenerParcelas(); // Vuelve a obtener la lista de parcelas después de eliminar
+  handleEditClick(id: number): void {
+    // Aquí se redirige a la ruta de registro con el ID de la parcela
+    this.router.navigate(['/parcela/register'], { queryParams: { id } });
   }
-  
+
+  handleAddClick(): void {
+    this.router.navigate(['/parcela/register']);
+  }
 }

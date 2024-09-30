@@ -1,21 +1,45 @@
-<div>
-  <h1>Registrar Tipo de Uva</h1>
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput [(ngModel)]="uva.nombre" name="nombre" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Sabor</mat-label>
-      <input matInput [(ngModel)]="uva.sabor" name="sabor" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Uso</mat-label>
-      <input matInput [(ngModel)]="uva.uso" name="uso" required>
-    </mat-form-field>
-
-    <button mat-raised-button (click)="guardarUva()">Guardar</button>
-  </form>
-</div>
+    <div class="register-container">
+      <mat-card class="register-card">
+        <mat-card-header>
+        </mat-card-header>
+    
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ editMode ? 'Editar Tipo de Uva' : 'Registrar Tipo de Uva' }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-icon matPrefix>hive</mat-icon>
+                <mat-label>Nombre de la Uva</mat-label>
+                <input matInput [(ngModel)]="uva.nombre" name="nombre" required>
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-icon matPrefix>emoji_food_beverage</mat-icon>
+                <mat-label>Sabor de la Uva</mat-label>
+                <input matInput [(ngModel)]="uva.sabor" name="sabor" required>
+              </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-icon matPrefix>liquor</mat-icon>
+                <mat-label>Uso de la Uva</mat-label>
+                <input matInput [(ngModel)]="uva.uso" name="uso" required>
+              </mat-form-field>
+        
+              <div class="button-group">
+                <button mat-raised-button color="primary" (click)="guardarUva()">
+                  <mat-icon>save</mat-icon>
+                  {{ editMode ? 'Actualizar' : 'Guardar' }}
+                </button>
+                <button mat-raised-button color="warn" (click)="cancelar()">
+                  <mat-icon>cancel</mat-icon>
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </mat-card>
+    </div>
+    

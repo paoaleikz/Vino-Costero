@@ -5,11 +5,12 @@ import { ControlTierraListComponent } from './views/control-tierra/control-tierr
 import { ControlTierraRegisterComponent } from './views/control-tierra/control-tierra-register/control-tierra-register.component';
 import { ParcelaRegisterComponent } from './views/parcelas/parcela-register/parcela-register.component';
 import { ParcelaListComponent } from './views/parcelas/parecela-list/parcela-list.component';
-import { TiposUvaListComponent } from './views/tipo-uva/tipo-uva-list/tipo-uva-list.component';
+import { TipoUvaListComponent } from './views/tipo-uva/tipo-uva-list/tipo-uva-list.component';
 import { TipoUvaRegisterComponent } from './views/tipo-uva/tipo-uva-register/tipo-uva-register.component';
 import { ControlProduccionVinosListComponent } from './views/control-produccion-vinos/control-produccion-vinos-list/control-produccion-vinos-list.component';
 import { ControlProduccionVinosRegisterComponent } from './views/control-produccion-vinos/control-produccion-vinos-register/control-produccion-vinos.component';
 import { FullComponent } from './layouts/full/full.component';
+
 
 const routes: Routes = [
   {
@@ -25,11 +26,11 @@ const routes: Routes = [
 
       // Rutas para las parcelas (listado y registro)
       { path: "parcela", component: ParcelaListComponent },
-      { path: "parcela/register", component: ParcelaRegisterComponent },
+      { path: 'parcela/register', component: ParcelaRegisterComponent },
 
        // Rutas para las uvas  (listado y registro)
-       { path: "tipoUvas", component: TiposUvaListComponent },
-       { path: "tipoUvas/register", component: TipoUvaRegisterComponent},
+       { path: "tipoUvas", component: TipoUvaListComponent },
+      { path: "tipoUvas/register", component: TipoUvaRegisterComponent },
 
       // Rutas para el Control de Producción de Vinos (listado y registro)
       { path: "control-produccion-vinos", component: ControlProduccionVinosListComponent },

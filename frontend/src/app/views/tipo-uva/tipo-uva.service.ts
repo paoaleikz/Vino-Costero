@@ -12,27 +12,33 @@ export class TipoUvaService {
     { id: 4, nombre: 'Sauvignon Blanc', sabor: 'Cítrico', uso: 'Vinos blancos' },
   ];
 
-  obtenerUvas(): any[] {
-    return this.uvas;
+  constructor() {}
+
+   // Método para agregar una nueva uva
+   agregarUva(uva: any): void {
+    this.uvas.push({ ...uva, id: this.uvas.length + 1 }); // Asignar un ID único
   }
 
-  eliminarUva(id: number): void {
-    this.uvas = this.uvas.filter(uva => uva.id !== id);
-  }
-
+  // Método para obtener una uva por ID
   obtenerUvaPorId(id: number): any {
-    return this.uvas.find(uva => uva.id === id);
+    return this.uvas.find(uva => uva.id === id) || null; // Devuelve la uva o null si no se encuentra
   }
 
-  agregarUva(nuevaUva: any): void {
-    const nuevoId = this.uvas.length ? Math.max(...this.uvas.map(uva => uva.id)) + 1 : 1;
-    this.uvas.push({ id: nuevoId, ...nuevaUva });
-  }
-
-  actualizarUva(actualizadaUva: any): void {
-    const index = this.uvas.findIndex(uva => uva.id === actualizadaUva.id);
+  // Método para actualizar una uva
+  actualizarUva(id: number, uvaData: any): void {
+    const index = this.uvas.findIndex(uva => uva.id === id);
     if (index !== -1) {
-      this.uvas[index] = actualizadaUva;
+      this.uvas[index] = { ...this.uvas[index], ...uvaData }; // Actualiza la uva
     }
+  }
+
+  // Método para eliminar una uva
+  eliminarUva(id: number): void {
+    this.uvas = this.uvas.filter(uva => uva.id !== id); // Elimina la uva por ID
+  }
+
+  // Método para obtener todas las uvas
+  obtenerUvas(): any[] {
+    return this.uvas; // Devuelve todas las uvas
   }
 }

@@ -15,23 +15,38 @@ export class TipoUvaListComponent implements OnInit {
   filtroNombre: string = ''; // Almacena el filtro por nombre
   filtroUso: string = ''; // Almacena el filtro por uso
 
-  constructor(private tipoUvaService: TipoUvaService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(
+    private tipoUvaService: TipoUvaService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
+    this.cargarUvas(); // Cargar la lista inicial de uvas
+  }
+
+  // Método para cargar las uvas desde el servicio
+  cargarUvas(): void {
     this.uvas = this.tipoUvaService.obtenerUvas(); // Obtener las uvas desde el servicio
     this.uvasFiltradas = [...this.uvas]; // Inicialmente, todas las uvas son visibles
   }
 
+  // Método para eliminar una uva
   eliminarUva(id: number): void {
-    this.tipoUvaService.eliminarUva(id);
-    this.uvas = this.tipoUvaService.obtenerUvas(); // Actualizar la lista de uvas
-    this.uvasFiltradas = [...this.uvas]; // Actualizar la lista filtrada
-    this.snackBar.open('Uva eliminada', '', { duration: 3000 });
+    const confirmacion = confirm('¿Estás seguro de que deseas eliminar esta uva?');
+    if (confirmacion) {
+      this.tipoUvaService.eliminarUva(id);
+      this.cargarUvas(); // Actualizar la lista de uvas después de eliminar
+      this.snackBar.open('Uva eliminada', '', { duration: 3000 });
+    }
   }
 
+  // Método para editar una uva
   editarUva(id: number): void {
     this.router.navigate(['/tipoUvas/register'], { queryParams: { id } });
   }
+
+  // Método para agregar una nueva uva
   handleAddClick(): void {
     this.router.navigate(['/tipoUvas/register']);
   }

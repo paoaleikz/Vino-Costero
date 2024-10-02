@@ -48,16 +48,18 @@
 }
 
 .filter-item {
-  width: 300px; /* Puedes ajustar el tamaño según lo necesites */
+  width: 250px; /* Puedes ajustar el tamaño según lo necesites */
   gap: 15px; /* Espacio entre los elementos */
   flex-wrap: wrap;
 }
 
 .table-title {
   margin-bottom: 16px; // Espacio entre el título y la tabla
-  font-size: 24px; // Tamaño de fuente del título
+  font-size: 20px; // Tamaño de fuente del título
   font-weight: bold; // Negrita para el título
   color: #3f51b5; // Cambia a un color que prefieras
+
+  
 }
 
 .header-cell {
@@ -78,7 +80,7 @@ table {
 }
 
 .mat-header-cell {
-  font-weight: bold; // Opcional: Estilo para las celdas de encabezado
+  font-weight: bold; /* Aplica negrita solo a las celdas de encabezado */
   background-color: #30b0bc; // Cambia el color del fondo del encabezado
 }
 
@@ -90,7 +92,6 @@ table {
   background-color: #09b0bc; /* Color de fondo azul */
   color: #070606; /* Color del texto blanco */
   font-weight: bold;
-  text-transform: uppercase; /* Texto en mayúsculas */
   font-weight: 900; /* Negrita */
+  text-transform: uppercase; /* Texto en mayúsculas */
 }
-

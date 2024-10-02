@@ -40,6 +40,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "node-sass": "^8.0.0",
-    "typescript": "~5.0.4"
+    "typescript": "~5.0.4",
+    "@angular/core": "^X.X.X",
+    "@angular/material": "^Y.Y.Y"
+
   }
 }

@@ -1,49 +1,53 @@
 <div class="table-container">
-<h2 class="table-title">Listado De Tipos de Uvas</h2>
-<div class="filter-container">
-  <mat-form-field appearance="fill" class="filter-field">
-    <mat-label>Filtrar Nombre Uva</mat-label>
-    <input matInput (input)="aplicarFiltroPorNombre($event)" placeholder="Nombre de uva">
-  </mat-form-field>
+  <h2 class="table-title">LISTADO DE TIPOS DE UVAS</h2>
+  
+  <div class="filter-container">
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Filtrar Nombre Uva</mat-label>
+      <input matInput (input)="aplicarFiltroPorNombre($event)" placeholder="Nombre de uva">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="filter-field">
-    <mat-label>Filtrar por Uso</mat-label>
-    <input matInput (input)="aplicarFiltroPorUso($event)" placeholder="Uso de la uva">
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Filtrar por Uso</mat-label>
+      <input matInput (input)="aplicarFiltroPorUso($event)" placeholder="Uso de la uva">
+    </mat-form-field>
+  </div>
+
+  <!-- Tabla de uvas -->
+  <table mat-table [dataSource]="uvasFiltradas" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef style="font-weight: bold; text-transform: uppercase;"> NOMBRE DE UVAS </th>
+      <td mat-cell *matCellDef="let uva"> {{ uva.nombre }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="sabor">
+      <th mat-header-cell *matHeaderCellDef style="font-weight: bold; text-transform: uppercase;"> SABOR DE UVA </th>
+      <td mat-cell *matCellDef="let uva"> {{ uva.sabor }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="uso">
+      <th mat-header-cell *matHeaderCellDef style="font-weight: bold; text-transform: uppercase;"> USO EN LA PRODUCCIÓN DE UVA </th>
+      <td mat-cell *matCellDef="let uva"> {{ uva.uso }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef style="font-weight: bold; text-transform: uppercase;"> ACCIONES </th>
+      <td mat-cell *matCellDef="let uva">
+        <button mat-button (click)="editarUva(uva.id)">Editar</button>
+        <button mat-button (click)="eliminarUva(uva.id)">Eliminar</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Botón flotante para agregar nuevas uvas -->
+  <app-float-button icon="add_circle" position="bottom-right" (action)="handleAddClick();">
+  </app-float-button>
 </div>
 
-<!-- Tabla de uvas -->
-<table mat-table [dataSource]="uvasFiltradas" class="mat-elevation-z8">
-
-  <!-- Definición de las columnas -->
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombres De Uvas </th>
-    <td mat-cell *matCellDef="let uva"> {{uva.nombre}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="sabor">
-    <th mat-header-cell *matHeaderCellDef> Sabor de Uva </th>
-    <td mat-cell *matCellDef="let uva"> {{uva.sabor}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="uso">
-    <th mat-header-cell *matHeaderCellDef> Uso En la Producción de Uva</th>
-    <td mat-cell *matCellDef="let uva"> {{uva.uso}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="acciones">
-    <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let uva">
-      <button mat-button (click)="editarUva(uva.id)">Editar</button>
-      <button mat-button (click)="eliminarUva(uva.id)">Eliminar</button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-  
 <!-- Botón flotante -->
 <app-float-button icon="add_circle" position="bottom-right" (action)="handleAddClick();">
 </app-float-button>

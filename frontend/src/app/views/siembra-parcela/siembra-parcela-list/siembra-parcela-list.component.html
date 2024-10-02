@@ -1,0 +1,40 @@
+<div class="siembra-list-container">
+  <h2>Listado de Siembras</h2>
+  <table mat-table [dataSource]="siembras" class="mat-elevation-z8">
+    <!-- Variedad de Uva Column -->
+    <ng-container matColumnDef="variedadUva">
+      <th mat-header-cell *matHeaderCellDef> Variedad de Uva </th>
+      <td mat-cell *matCellDef="let siembra"> {{siembra.variedadUva}} </td>
+    </ng-container>
+
+    <!-- Cantidad Sembrada Column -->
+    <ng-container matColumnDef="cantidadSembrada">
+      <th mat-header-cell *matHeaderCellDef> Cantidad Sembrada </th>
+      <td mat-cell *matCellDef="let siembra"> {{siembra.cantidadSembrada}} </td>
+    </ng-container>
+
+    <!-- Estado Column -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let siembra"> {{siembra.estado}} </td>
+    </ng-container>
+
+    <!-- Fecha Siembra Column -->
+    <ng-container matColumnDef="fechaSiembra">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Siembra </th>
+      <td mat-cell *matCellDef="let siembra"> {{siembra.fechaSiembra | date:'shortDate'}} </td>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let siembra; let i = index">
+        <button mat-button color="primary" (click)="eliminarSiembra(i)">Eliminar</button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Rows -->
+    <tr mat-header-row *matHeaderRowDef="['variedadUva', 'cantidadSembrada', 'estado', 'fechaSiembra', 'acciones']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['variedadUva', 'cantidadSembrada', 'estado', 'fechaSiembra', 'acciones']"></tr>
+  </table>
+</div>

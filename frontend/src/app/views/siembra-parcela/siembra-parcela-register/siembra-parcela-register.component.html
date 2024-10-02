@@ -1,0 +1,39 @@
+<div class="styled-card">
+  <div class="styled-card-header">
+    <h2>Registrar Siembra de Parcela</h2>
+  </div>
+  <div class="styled-card-body">
+    <form [formGroup]="siembraForm" (ngSubmit)="registrarSiembra()">
+      <mat-form-field>
+        <mat-label>Variedad de Uva</mat-label>
+        <input matInput formControlName="variedadUva" placeholder="Ingrese la variedad de uva" required>
+        <mat-error *ngIf="siembraForm.get('variedadUva')?.hasError('required')">La variedad de uva es requerida.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cantidad Sembrada</mat-label>
+        <input matInput formControlName="cantidadSembrada" placeholder="Ingrese la cantidad sembrada" required>
+        <mat-error *ngIf="siembraForm.get('cantidadSembrada')?.hasError('required')">La cantidad sembrada es requerida.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado" placeholder="Ingrese el estado de la siembra" required>
+        <mat-error *ngIf="siembraForm.get('estado')?.hasError('required')">El estado es requerido.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Fecha de Siembra</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaSiembra" placeholder="Seleccione la fecha de siembra" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="siembraForm.get('fechaSiembra')?.hasError('required')">La fecha de siembra es requerida.</mat-error>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+        <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

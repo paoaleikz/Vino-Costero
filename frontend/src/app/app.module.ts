@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FullComponent } from './layouts/full/full.component';
 import { DemoFlexyModule } from './demo-flexy-module';
+import { HttpClientModule } from '@angular/common/http';
 
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -16,8 +17,14 @@ import { ChildrenModule } from './views/childrens/children.module';
 import { ControlTierraModule } from './views/control-tierra/control-tierra.module';
 import { ParcelaModule } from './views/parcelas/parcela.module';
 import { TipoUvaModule } from './views/tipo-uva/tipo-uva.module';
+import {SiembraParcelaModule} from './views/siembra-parcela/siembra-parcela.module';
 import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
+
+
 
 
 @NgModule({
@@ -40,7 +47,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ParcelaModule,
     ControlProduccionVinosModule,
     MatSnackBarModule,
-    TipoUvaModule
+    TipoUvaModule,
+    HttpClientModule,
+    SiembraParcelaModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

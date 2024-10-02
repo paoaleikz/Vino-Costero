@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { ControlTierraListComponent } from './views/control-tierra/control-tierra-list/control-tierra-list.component';
 import { ControlTierraRegisterComponent } from './views/control-tierra/control-tierra-register/control-tierra-register.component';
 import { ParcelaRegisterComponent } from './views/parcelas/parcela-register/parcela-register.component';
@@ -10,8 +11,8 @@ import { TipoUvaRegisterComponent } from './views/tipo-uva/tipo-uva-register/tip
 import { ControlProduccionVinosListComponent } from './views/control-produccion-vinos/control-produccion-vinos-list/control-produccion-vinos-list.component';
 import { ControlProduccionVinosRegisterComponent } from './views/control-produccion-vinos/control-produccion-vinos-register/control-produccion-vinos.component';
 import { FullComponent } from './layouts/full/full.component';
-
-
+import {SiembraParcelaListComponent}from './views/siembra-parcela/siembra-parcela-list/siembra-parcela-list.component';
+import {SiembraParcelaRegisterComponent} from './views/siembra-parcela/siembra-parcela-register/siembra-parcela-register.component';
 const routes: Routes = [
   {
     path: "",
@@ -31,6 +32,10 @@ const routes: Routes = [
        // Rutas para las uvas  (listado y registro)
        { path: "tipoUvas", component: TipoUvaListComponent },
       { path: "tipoUvas/register", component: TipoUvaRegisterComponent },
+
+        // Rutas para las siembra parcelas  (listado y registro)
+        { path: 'siembraParcela', component: SiembraParcelaListComponent },
+        { path: 'siembraParcela/register', component: SiembraParcelaRegisterComponent },
 
       // Rutas para el Control de Producción de Vinos (listado y registro)
       { path: "control-produccion-vinos", component: ControlProduccionVinosListComponent },

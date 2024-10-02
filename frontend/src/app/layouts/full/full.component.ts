@@ -35,18 +35,19 @@ export class FullComponent {
       icon: "perm_media",
       menu: "Parcelas",
     },
-    {
-      link: "/tierra",
-      icon: "landscape",
-      menu: "Registro Tierras",
-    },
+    
     {
       link: "/tipoUvas",
       icon: "hive",
       menu: "Registro Tipos de Uvas",
     },
     {
-      link: "/Registro-siembra-parcela",
+      link: "/tierra",
+      icon: "landscape",
+      menu: "Registro Tierras",
+    },
+    {
+      link: "/siembraParcela",
       icon: "compost",
       menu: "Registro Siembra Parcelas",
     },

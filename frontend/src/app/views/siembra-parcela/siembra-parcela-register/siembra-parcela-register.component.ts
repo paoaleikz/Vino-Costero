@@ -12,7 +12,7 @@ import { Siembra } from '../Models/siembra.model'; // Asegúrate de que la ruta 
 })
 export class SiembraParcelaRegisterComponent implements OnInit {
   siembraForm: FormGroup;
-  siembra: Siembra | null | undefined= null; // Inicializa como null
+  siembra: Siembra | null | undefined = null; // Inicializa como null
   isEditing: boolean = false; // Estado para saber si estamos editando
 
   constructor(
@@ -34,13 +34,11 @@ export class SiembraParcelaRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id'); // Uso correcto de ActivatedRoute
-    
-    // Verificamos si hay un id y si es un número válido
-    if (id && !isNaN(+id)) {
+    const id = this.route.snapshot.queryParamMap.get('id'); // Usa queryParamMap para obtener el id
+    if (id) {
       this.isEditing = true; // Estamos en modo de edición
       this.siembraParcelaService.obtenerSiembra(+id).subscribe(
-        (siembra: Siembra|undefined) => {
+        (siembra: Siembra | undefined) => {
           this.siembra = siembra;
           if (this.siembra) {
             this.siembraForm.patchValue(this.siembra);
@@ -51,9 +49,9 @@ export class SiembraParcelaRegisterComponent implements OnInit {
             this.router.navigate(['/siembraParcela']); // Navegar a la lista si no se encuentra
           }
         },
-        (error: any) => { // Especificamos el tipo 'any' aquí
+        (error: any) => { // Manejo de errores
           console.error('Error al obtener la siembra:', error);
-          this.snackBar.open('Error al cargar la siembra.', 'Cerrar', {
+          this.snackBar.open('Error al cargar la siembra.', '', {
             duration: 3000
           });
           this.router.navigate(['/siembraParcela']); // Navegar a la lista si ocurre un error
@@ -74,18 +72,23 @@ export class SiembraParcelaRegisterComponent implements OnInit {
 
     if (this.isEditing) {
       this.siembraParcelaService.actualizarSiembra(siembraData);
+      this.snackBar.open('Siembra actualizada exitosamente', '', {
+        duration: 3000,
+      });
     } else {
       this.siembraParcelaService.agregarSiembra(siembraData);
-      this.snackBar.open('Siembra registrada exitosamente.', 'Cerrar', {
+      this.snackBar.open('Siembra registrada exitosamente.', '', {
         duration: 3000
       });
-      this.limpiarFormulario(); // Limpia el formulario después de registrar
     }
+    
+    this.router.navigate(['/siembraParcela']); // Navega a la lista después de registrar o actualizar
+    this.limpiarFormulario(); // Limpia el formulario después de registrar
   }
 
   limpiarFormulario(): void {
     this.siembraForm.reset();
     this.isEditing = false; // Volver al estado de no edición
+    this.router.navigate(['/siembraParcela']);
   }
 }
-

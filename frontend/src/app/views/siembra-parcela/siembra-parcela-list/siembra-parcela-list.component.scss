@@ -58,6 +58,7 @@
   font-size: 20px; // Tamaño de fuente del título
   font-weight: bold; // Negrita para el título
   color: #3f51b5; // Cambia a un color que prefieras
+  text-align: center; // Centrar el texto
 
   
 }
@@ -94,4 +95,10 @@ table {
   font-weight: bold;
   font-weight: 900; /* Negrita */
   text-transform: uppercase; /* Texto en mayúsculas */
+}
+.styled-title {
+  text-align: center; // Centrar el texto
+  text-transform: uppercase; // Convertir a mayúsculas
+  font-weight: bold; // (Opcional) Para hacer el texto más grueso
+
 }

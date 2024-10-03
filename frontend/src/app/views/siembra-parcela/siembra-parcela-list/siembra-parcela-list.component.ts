@@ -1,33 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { SiembraParcelaService } from '../siembra-parcela.service';
-import { Router } from '@angular/router'; // Importar Router
+import { Router } from '@angular/router';
+import { SiembraParcelaService } from '../siembra-parcela.service'; // Asegúrate de que la ruta sea correcta
+import { Siembra } from '../Models/siembra.model'; // Asegúrate de que la ruta es correcta
 
 @Component({
   selector: 'app-siembra-parcela-list',
   templateUrl: './siembra-parcela-list.component.html',
-  styleUrls: ['./siembra-parcela-list.component.scss']
+  styleUrls: ['./siembra-parcela-list.component.scss'],
 })
 export class SiembraParcelaListComponent implements OnInit {
-  siembras: any[] = []; // Aquí almacenaremos las siembras obtenidas del servicio
+  siembras: Siembra[] = []; // Arreglo para almacenar las siembras
 
-  constructor(private siembraService: SiembraParcelaService, private router: Router) {} // Cambiar Route por Router
+  constructor(
+    private siembraParcelaService: SiembraParcelaService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // Obtenemos las siembras al iniciar el componente
-    this.obtenerSiembras();
+    this.obtenerSiembras(); // Llama a obtener siembras al inicializar el componente
   }
 
   obtenerSiembras(): void {
-    // Llamamos al método del servicio para obtener las siembras
-    this.siembras = this.siembraService.obtenerSiembras();
+    this.siembraParcelaService.obtenerSiembras().subscribe((siembras) => {
+      this.siembras = siembras; // Asigna las siembras obtenidas al arreglo
+    });
   }
 
-  eliminarSiembra(index: number): void {
-    // Removemos la siembra del array
-    this.siembras.splice(index, 1); // Aquí puedes agregar lógica de eliminación real si tienes backend
+   // Aquí defines la función handleEditClick
+   handleEditClick(id: number): void {
+    this.router.navigate(['/siembraParcela', id]); // Cambia la ruta según tu configuración
+  }
+
+  // Método para eliminar una siembra
+  eliminarSiembra(id: number): void {
+    this.siembraParcelaService.eliminarSiembra(id); // Llama al servicio para eliminar la siembra
+    this.obtenerSiembras(); // Vuelve a obtener la lista de siembras después de eliminar
   }
 
   handleAddClick(): void {
-    this.router.navigate(['/parcelaParcela/register']);
-  }
+    this.router.navigate(['/siembraParcela/register']); // Cambia la ruta según tu configuración
+  }  
 }

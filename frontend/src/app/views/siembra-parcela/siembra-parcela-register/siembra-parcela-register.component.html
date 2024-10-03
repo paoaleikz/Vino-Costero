@@ -1,38 +1,82 @@
-<div class="styled-card">
-  <div class="styled-card-header">
-    <h2>Registrar Siembra de Parcela</h2>
+<div class="card styled-card">
+  <div class="card-header styled-card-header">
+    <h4 class="styled-title">{{ isEditing ? 'Editar Siembra' : 'Registrar Siembra' }}</h4>
   </div>
-  <div class="styled-card-body">
+  <div class="card-body styled-card-body">
     <form [formGroup]="siembraForm" (ngSubmit)="registrarSiembra()">
-      <mat-form-field>
+
+      <!-- Seleccionar Parcela -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Parcela</mat-label>
+        <mat-icon matPrefix>map</mat-icon>
+        <input matInput formControlName="parcela" required>
+        <mat-error *ngIf="siembraForm.get('parcela')?.invalid && siembraForm.get('parcela')?.touched">
+          La parcela es requerida.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Variedad de Uva -->
+      <mat-form-field class="form-field" appearance="fill">
         <mat-label>Variedad de Uva</mat-label>
-        <input matInput formControlName="variedadUva" placeholder="Ingrese la variedad de uva" required>
-        <mat-error *ngIf="siembraForm.get('variedadUva')?.hasError('required')">La variedad de uva es requerida.</mat-error>
+        <mat-icon matPrefix>local_florist</mat-icon>
+        <input matInput formControlName="variedadUva" required>
+        <mat-error *ngIf="siembraForm.get('variedadUva')?.invalid && siembraForm.get('variedadUva')?.touched">
+          La variedad de uva es requerida.
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Cantidad Sembrada</mat-label>
-        <input matInput formControlName="cantidadSembrada" placeholder="Ingrese la cantidad sembrada" required>
-        <mat-error *ngIf="siembraForm.get('cantidadSembrada')?.hasError('required')">La cantidad sembrada es requerida.</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <input matInput formControlName="estado" placeholder="Ingrese el estado de la siembra" required>
-        <mat-error *ngIf="siembraForm.get('estado')?.hasError('required')">El estado es requerido.</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
+      <!-- Fecha de Siembra -->
+      <mat-form-field class="form-field" appearance="fill">
         <mat-label>Fecha de Siembra</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaSiembra" placeholder="Seleccione la fecha de siembra" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="siembraForm.get('fechaSiembra')?.hasError('required')">La fecha de siembra es requerida.</mat-error>
+        <mat-icon matPrefix>calendar_today</mat-icon>
+        <input matInput formControlName="fechaSiembra" type="date" required>
+        <mat-error *ngIf="siembraForm.get('fechaSiembra')?.invalid && siembraForm.get('fechaSiembra')?.touched">
+          La fecha de siembra es requerida.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Cantidad Sembrada -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Cantidad Sembrada</mat-label>
+        <mat-icon matPrefix>grain</mat-icon>
+        <input matInput formControlName="cantidadSembrada" type="number" required>
+        <mat-error *ngIf="siembraForm.get('cantidadSembrada')?.invalid && siembraForm.get('cantidadSembrada')?.touched">
+          La cantidad sembrada es requerida.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Estado de la Siembra -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Estado de la Siembra</mat-label>
+        <mat-icon matPrefix>eco</mat-icon>
+        <mat-select formControlName="estadoSiembra" required>
+          <mat-option value="Creciendo">Creciendo</mat-option>
+          <mat-option value="Plagas">Plagas</mat-option>
+          <mat-option value="Cosechado">Cosechado</mat-option>
+        </mat-select>
+        <mat-error *ngIf="siembraForm.get('estadoSiembra')?.invalid && siembraForm.get('estadoSiembra')?.touched">
+          El estado de la siembra es requerido.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Plagas -->
+      <mat-checkbox formControlName="plagas">¿Plagas detectadas?</mat-checkbox>
+
+      <!-- Comentarios -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Comentarios</mat-label>
+        <mat-icon matPrefix>comment</mat-icon>
+        <textarea matInput formControlName="comentarios"></textarea>
+      </mat-form-field>
+
+      <!-- Botones -->
       <div class="button-group">
-        <button mat-raised-button color="primary" type="submit">Guardar</button>
-        <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="siembraForm.invalid">
+          <mat-icon>save</mat-icon> {{ isEditing ? 'Actualizar Siembra' : 'Registrar Siembra' }}
+        </button>
+        <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
+          <mat-icon>cancel</mat-icon> Cancelar
+        </button>
       </div>
     </form>
   </div>

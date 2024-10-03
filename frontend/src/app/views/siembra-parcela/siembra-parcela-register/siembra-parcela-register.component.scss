@@ -116,3 +116,12 @@ button[mat-flat-button][color="warn"]:hover {
 .alert-success mat-icon {
   margin-right: 8px;
 }
+// src/app/views/siembra-parcela/siembra-parcela-register.component.scss
+
+.styled-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold; // (Opcional)
+  margin: 0; // Para eliminar el margen por defecto
+}
+

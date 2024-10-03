@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SiembraParcelaService } from '../siembra-parcela.service';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SiembraParcelaService } from '../siembra-parcela.service'; // Ajusta la ruta según sea necesario
+import { Siembra } from '../Models/siembra.model'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-siembra-parcela-register',
@@ -10,46 +11,81 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./siembra-parcela-register.component.scss']
 })
 export class SiembraParcelaRegisterComponent implements OnInit {
-  siembraForm: FormGroup; // Definir el formulario
-  siembras: any[] = []; // Array para almacenar las siembras
+  siembraForm: FormGroup;
+  siembra: Siembra | null | undefined= null; // Inicializa como null
+  isEditing: boolean = false; // Estado para saber si estamos editando
 
   constructor(
-    private formBuilder: FormBuilder,
-    private siembraService: SiembraParcelaService,
+    private fb: FormBuilder,
+    private siembraParcelaService: SiembraParcelaService,
+    private snackBar: MatSnackBar,
     private router: Router,
-    private snackBar: MatSnackBar
+    private route: ActivatedRoute // Asegúrate de que esta línea esté presente
   ) {
-    // Inicialización del formulario reactivo
-    this.siembraForm = this.formBuilder.group({
+    this.siembraForm = this.fb.group({
+      parcela: ['', Validators.required],
       variedadUva: ['', Validators.required],
-      cantidadSembrada: ['', Validators.required],
-      estado: ['', Validators.required],
-      fechaSiembra: ['', Validators.required]
+      fechaSiembra: ['', Validators.required],
+      cantidadSembrada: [0, [Validators.required, Validators.min(1)]],
+      estadoSiembra: ['', Validators.required],
+      plagas: [false],
+      comentarios: ['']
     });
   }
 
   ngOnInit(): void {
-    // Obtenemos las siembras al iniciar el componente
-    this.siembras = this.siembraService.obtenerSiembras(); // Asegúrate de que este método retorne un array de siembras
-  }
-
-  registrarSiembra() {
-    if (this.siembraForm.valid) {
-      // Aquí puedes llamar al servicio para registrar la siembra
-      this.siembraService.agregarSiembra(this.siembraForm.value);
-      this.snackBar.open('Siembra registrada exitosamente', '', {
-        duration: 3000,
-      });
-      this.router.navigate(['/siembra-parcela']); // Redirigir al listado después de registrar
-    } else {
-      this.snackBar.open('Por favor, completa todos los campos.', '', {
-        duration: 3000,
-      });
+    const id = this.route.snapshot.paramMap.get('id'); // Uso correcto de ActivatedRoute
+    
+    // Verificamos si hay un id y si es un número válido
+    if (id && !isNaN(+id)) {
+      this.isEditing = true; // Estamos en modo de edición
+      this.siembraParcelaService.obtenerSiembra(+id).subscribe(
+        (siembra: Siembra|undefined) => {
+          this.siembra = siembra;
+          if (this.siembra) {
+            this.siembraForm.patchValue(this.siembra);
+          } else {
+            this.snackBar.open('Siembra no encontrada.', 'Cerrar', {
+              duration: 3000
+            });
+            this.router.navigate(['/siembraParcela']); // Navegar a la lista si no se encuentra
+          }
+        },
+        (error: any) => { // Especificamos el tipo 'any' aquí
+          console.error('Error al obtener la siembra:', error);
+          this.snackBar.open('Error al cargar la siembra.', 'Cerrar', {
+            duration: 3000
+          });
+          this.router.navigate(['/siembraParcela']); // Navegar a la lista si ocurre un error
+        }
+      );
     }
   }
 
-  // Método para cancelar y volver al listado
-  onCancel() {
-    this.router.navigate(['/siembra-parcela']);
+  registrarSiembra(): void {
+    if (this.siembraForm.invalid) {
+      this.snackBar.open('Por favor, complete todos los campos requeridos.', 'Cerrar', {
+        duration: 3000
+      });
+      return;
+    }
+
+    const siembraData: Siembra = { ...this.siembraForm.value, id: this.isEditing ? this.siembra?.id : undefined };
+
+    if (this.isEditing) {
+      this.siembraParcelaService.actualizarSiembra(siembraData);
+    } else {
+      this.siembraParcelaService.agregarSiembra(siembraData);
+      this.snackBar.open('Siembra registrada exitosamente.', 'Cerrar', {
+        duration: 3000
+      });
+      this.limpiarFormulario(); // Limpia el formulario después de registrar
+    }
+  }
+
+  limpiarFormulario(): void {
+    this.siembraForm.reset();
+    this.isEditing = false; // Volver al estado de no edición
   }
 }
+

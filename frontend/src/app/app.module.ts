@@ -18,9 +18,14 @@ import { ControlTierraModule } from './views/control-tierra/control-tierra.modul
 import { ParcelaModule } from './views/parcelas/parcela.module';
 import { TipoUvaModule } from './views/tipo-uva/tipo-uva.module';
 import {SiembraParcelaModule} from './views/siembra-parcela/siembra-parcela.module';
-import { ControlProduccionVinosModule } from './views/control-produccion-vinos/control-produccion-vinos.module';
+import { ProduccionModule } from './views/produccion/produccion.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { AccessDeniedComponent } from './views/security/access-denied/access-denied.component';
+import { RolesManagementComponent } from './views/security/roles-management/roles-management.component';
+import { LoginComponent } from './views/security/login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -30,7 +35,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
-    FullComponent
+    FullComponent,
+    AccessDeniedComponent,
+    RolesManagementComponent,
+    LoginComponent
   
   ],
   imports: [
@@ -45,11 +53,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ChildrenModule,
     ControlTierraModule,
     ParcelaModule,
-    ControlProduccionVinosModule,
+    ProduccionModule,
     MatSnackBarModule,
     TipoUvaModule,
     HttpClientModule,
-    SiembraParcelaModule
+    SiembraParcelaModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
     
   ],
   providers: [],

@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'; // Agregar para usar 
 })
 export class SiembraParcelaListComponent implements OnInit {
   siembras: any[] = []; // Arreglo para almacenar las siembras
-  displayedColumns: string[] = ['parcela', 'variedadUva', 'fechaSiembra', 'cantidadSembrada', 'estadoSiembra', 'acciones'];
+  displayedColumns: string[] = ['parcela', 'variedadUva', 'fechaSiembra', 'cantidadSembrada', 'estadoSiembra','plagas','comentarios', 'acciones'];
 
   constructor(
     private siembraParcelaService: SiembraParcelaService,

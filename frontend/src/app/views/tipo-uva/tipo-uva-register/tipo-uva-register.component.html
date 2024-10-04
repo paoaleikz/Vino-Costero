@@ -1,8 +1,7 @@
 <!-- Registro de tipos de uvas -->
-
 <div class="card styled-card">
-<div class="card-header styled-card-header">
-    <h4 class="styled-title">{{ isEditing ? 'Editar Tipo de  Uva' : 'Registrar Tipo de Uva' }}</h4>
+  <div class="card-header styled-card-header">
+    <h4 class="styled-title">{{ isEditing ? 'Editar Tipo de Uva' : 'Registrar Tipo de Uva' }}</h4>
   </div>
 
   <div class="card-body styled-card-body">
@@ -11,6 +10,7 @@
       <!-- Nombre de la Uva -->
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Nombre de la Uva</mat-label>
+        <mat-icon matPrefix>hive</mat-icon> <!-- Icono para el nombre -->
         <input matInput formControlName="nombre">
         <mat-error *ngIf="tipoUvaForm.get('nombre')?.invalid && tipoUvaForm.get('nombre')?.touched">
           El nombre de la uva es Obligatorio.
@@ -20,6 +20,7 @@
       <!-- Sabor de la Uva -->
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Sabor de la Uva</mat-label>
+        <mat-icon matPrefix>emoji_food_beverage</mat-icon> <!-- Icono para el sabor -->
         <input matInput formControlName="sabor">
         <mat-error *ngIf="tipoUvaForm.get('sabor')?.invalid && tipoUvaForm.get('sabor')?.touched">
           El sabor de la uva es Obligatorio.
@@ -29,6 +30,7 @@
       <!-- Uso de la Uva -->
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Uso de la Uva</mat-label>
+        <mat-icon matPrefix>liquor</mat-icon> <!-- Icono para el uso -->
         <input matInput formControlName="uso">
         <mat-error *ngIf="tipoUvaForm.get('uso')?.invalid && tipoUvaForm.get('uso')?.touched">
           El uso de la uva es Obligatorio.

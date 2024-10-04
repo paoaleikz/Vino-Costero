@@ -1,7 +1,7 @@
 //@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 .table-container {
   padding: 16px; // Espacio alrededor de la tabla
-  background-color: #e2eef0; // Fondo gris claro
+  background-color: #f0f5f6; // Fondo gris claro
   border-radius: 4px; // Bordes redondeados
   box-shadow: 0 2px 10px rgba(205, 28, 28, 0.1); // Sombra suave
   display: flex;
@@ -22,7 +22,7 @@
 }
 
 .delete-icon {
-  color: red; /* Color rojo para el ícono de eliminar */
+  color: rgb(251, 8, 8); /* Color rojo para el ícono de eliminar */
 }
 
 .edit-icon {
@@ -43,7 +43,7 @@
 }
 .mat-header-cell {
   font-weight: bold; // Negrita para los títulos
-  background-color: #0d61b5; // Color de fondo azul para los encabezados
+  background-color: #0556a6; // Color de fondo azul para los encabezados
   color: white; // Color de texto blanco
   font-size: 16px; // Tamaño de fuente del encabezado
   padding: 10px; // Espaciado interno para las celdas del encabezado
@@ -88,8 +88,8 @@
 }
 /* Clase personalizada para los encabezados de la tabla */
 .custom-header {
-  background-color: #09b0bc; /* Color de fondo azul */
-  color: #070606; /* Color del texto blanco */
+  background-color: #09c8d6; /* Color de fondo azul */
+  color: #ed8989; /* Color del texto blanco */
   font-weight: bold;
   font-weight: 900; /* Negrita */
   text-transform: uppercase; /* Texto en mayúsculas */

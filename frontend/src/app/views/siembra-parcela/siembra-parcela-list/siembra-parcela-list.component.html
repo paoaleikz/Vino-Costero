@@ -1,51 +1,69 @@
 <div class="table-container">
   <h2 class="table-title">Lista de Siembras de Parcelas</h2>
-  <table mat-table [dataSource]="siembras" class="mat-elevation-z8">
+  <table mat-table [dataSource]="siembras" class="mat-elevation-z8 styled-table">
 
     <!-- Parcela -->
     <ng-container matColumnDef="parcela">
-      <th mat-header-cell *matHeaderCellDef> Parcela </th>
-      <td mat-cell *matCellDef="let siembra">{{ siembra.parcela }}</td>
+      <th mat-header-cell *matHeaderCellDef class="table-header"> PARCELA </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.parcela }}</td>
     </ng-container>
 
     <!-- Variedad de Uva -->
     <ng-container matColumnDef="variedadUva">
-      <th mat-header-cell *matHeaderCellDef> Variedad de Uva </th>
-      <td mat-cell *matCellDef="let siembra">{{ siembra.variedadUva }}</td>
+      <th mat-header-cell *matHeaderCellDef class="table-header"> TIPO DE UVA </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.variedadUva }}</td>
     </ng-container>
 
     <!-- Fecha de Siembra -->
     <ng-container matColumnDef="fechaSiembra">
-      <th mat-header-cell *matHeaderCellDef> Fecha de Siembra </th>
-      <td mat-cell *matCellDef="let siembra">{{ siembra.fechaSiembra | date }}</td>
+      <th mat-header-cell *matHeaderCellDef class="table-header"> FECHA DE SIEMBRA </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.fechaSiembra | date }}</td>
     </ng-container>
 
     <!-- Cantidad Sembrada -->
     <ng-container matColumnDef="cantidadSembrada">
-      <th mat-header-cell *matHeaderCellDef> Cantidad Sembrada </th>
-      <td mat-cell *matCellDef="let siembra">{{ siembra.cantidadSembrada }}</td>
+      <th mat-header-cell *matHeaderCellDef class="table-header"> CANTIDAD SEMBRADA </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.cantidadSembrada }}</td>
     </ng-container>
 
     <!-- Estado -->
     <ng-container matColumnDef="estadoSiembra">
-      <th mat-header-cell *matHeaderCellDef> Estado </th>
-      <td mat-cell *matCellDef="let siembra">{{ siembra.estadoSiembra }}</td>
+      <th mat-header-cell *matHeaderCellDef class="table-header"> ESTADO </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.estadoSiembra }}</td>
     </ng-container>
 
-    <!-- Acciones -->
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
-      <td mat-cell *matCellDef="let siembra">
-        <button mat-button (click)="handleEditClick(siembra.id)">Editar</button>
-        <button mat-button (click)="eliminarSiembra(siembra.id)">Eliminar</button>
-      </td>
+    <!-- Plagas -->
+    <ng-container matColumnDef="plagas">
+      <th mat-header-cell *matHeaderCellDef class="table-header"> DETECCIÓN DE PLAGAS </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.plagas ? 'Sí' : 'No' }}</td>
     </ng-container>
+
+    <!-- Comentarios -->
+    <ng-container matColumnDef="comentarios">
+      <th mat-header-cell *matHeaderCellDef class="table-header"> COMENTARIOS </th>
+      <td mat-cell *matCellDef="let siembra" class="table-cell">{{ siembra.comentarios }}</td>
+    </ng-container>
+
+          <!-- Acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef class="table-header"> ACCIONES </th>
+        <td mat-cell *matCellDef="let siembra" class="table-cell">
+          <button mat-button (click)="handleEditClick(siembra.id)" class="action-button">
+            <mat-icon class="edit-icon">edit</mat-icon> <!-- Icono de editar -->
+          </button>
+          <button mat-button (click)="eliminarSiembra(siembra.id)" class="action-button">
+            <mat-icon class="delete-icon">delete</mat-icon> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </ng-container>
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>
+
 
 <!-- Botón flotante -->
 <app-float-button icon="add_circle" position="bottom-right" (action)="handleAddClick();">
 </app-float-button>
-</div>

@@ -9,7 +9,7 @@ form-row {
   min-width: 0; 
 }
 .styled-card {
-  background-color: #fff;
+  background-color: #fcf8f8;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
   border-radius: 10px; /* Bordes redondeados */
   max-width: 700px; /* Ancho máximo para el card */
@@ -26,8 +26,8 @@ form-row {
 
 /* Estilo del header */
 .styled-card-header {
-  background-color: #22c1d6; /* Fondo azul suave */
-  color: white; /* Texto blanco */
+  background-color: #18a1b4; /* Fondo azul suave */
+  color: rgb(253, 250, 250); /* Texto blanco */
   padding: 10px;
   text-align: center; /* Centrado del título */
   border-radius: 10px 10px 0 0; /* Bordes superiores redondeados */
@@ -39,7 +39,7 @@ form-row {
 }
 
 .styled-title {
-  color: #123a86; /* Color base */
+  color: #103578; /* Color base */
   font-weight: 800; /* Negrita */
   font-size: 20px; /* Tamaño del texto */
   text-align: center; /* Centrar el título */
@@ -67,8 +67,8 @@ button[mat-flat-button] {
 
 /* Color personalizado para el botón guardar */
 button[mat-flat-button][color="primary"] {
-  background-color: #22c1d6;
-  color: white;
+  background-color: #1dc8de;
+  color: rgb(255, 255, 255);
 }
 
 button[mat-flat-button][color="primary"]:hover {
@@ -87,12 +87,12 @@ button[mat-flat-button][color="warn"]:hover {
 .button-group {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente si es necesario */
   gap: 16px; /* Espacio entre los botones */
   margin-top: 20px; /* Separación con los campos anteriores */
+  align-items: center;
 }
 .mat-error {
-  color: red; // Cambia el color del mensaje de error
+  color: rgb(255, 0, 0); // Cambia el color del mensaje de error
   font-size: 12px; // Ajusta el tamaño de la fuente
 }
 /* Estilo para los mensajes de éxito */
@@ -103,7 +103,7 @@ button[mat-flat-button][color="warn"]:hover {
 /* Estilo para el mensaje de éxito */
 .alert-success {
   background-color: #dff0d8;
-  border-color: #d6e9c6;
+  border-color: #86ca4f;
   color: #12cc15;
   padding: 10px;
   border-radius: 4px;
@@ -111,7 +111,9 @@ button[mat-flat-button][color="warn"]:hover {
   align-items: center;
   font-weight: bold;
 }
-
-.alert-success mat-icon {
-  margin-right: 8px;
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Espacio entre los botones */
+  margin-top: 20px; /* Espacio en la parte superior */
 }

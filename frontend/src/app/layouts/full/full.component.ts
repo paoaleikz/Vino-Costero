@@ -52,7 +52,7 @@ export class FullComponent {
       menu: "Registro Siembra Parcelas",
     },
     {
-      link: "/control-produccion-vinos",
+      link: "/produccion",
       icon: "liquor",
       menu: "Control Produccion Vinos",
     },

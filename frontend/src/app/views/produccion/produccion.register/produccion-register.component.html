@@ -1,0 +1,53 @@
+<!-- Registro de Producción -->
+<div class="card styled-card">
+  <div class="card-header styled-card-header">
+    <h2>{{ isEditMode ? 'Actualizar Producción' : 'Registrar Producción' }}</h2>
+  </div>
+  <div class="card-body styled-card-body">
+    <form (ngSubmit)="registrarParcela()" #parcelaForm="ngForm">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Parcela</mat-label>
+        <mat-icon matPrefix>area_chart</mat-icon>
+        <mat-select [(ngModel)]="nuevaProduccion.parcela" name="parcela" required [disabled]="isReadOnly">
+          <mat-option *ngFor="let parcela of parcelas" [value]="parcela">{{ parcela }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="parcelaForm.controls['parcela']?.errors?.['required']">La parcela es obligatoria.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de Uva</mat-label>
+        <mat-icon matPrefix>hive</mat-icon>
+        <mat-select [(ngModel)]="nuevaProduccion.tipoUva" name="tipoUva" required [disabled]="isReadOnly">
+          <mat-option *ngFor="let uva of tiposUva" [value]="uva">{{ uva }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="parcelaForm.controls['tipoUva']?.errors?.['required']">El tipo de uva es obligatorio.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad Esperada</mat-label>
+        <mat-icon matPrefix>liquor</mat-icon>
+        <input type="number" matInput [(ngModel)]="nuevaProduccion.cantidadEsperada" name="cantidadEsperada" required [readonly]="isReadOnly">
+        <mat-error *ngIf="parcelaForm.controls['cantidadEsperada']?.errors?.['required']">La cantidad esperada es obligatoria.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-icon matPrefix>hourglass_bottom</mat-icon>
+        <mat-select [(ngModel)]="nuevaProduccion.estado" name="estado" required>
+          <mat-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="parcelaForm.controls['estado']?.errors?.['required']">El estado es obligatorio.</mat-error>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit" [disabled]="parcelaForm.invalid">
+          {{ isEditMode ? 'Actualizar' : 'Registrar' }}
+        </button>
+        <button mat-flat-button color="warn" type="button" (click)="limpiarFormulario()">
+          <mat-icon>cancel</mat-icon> Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

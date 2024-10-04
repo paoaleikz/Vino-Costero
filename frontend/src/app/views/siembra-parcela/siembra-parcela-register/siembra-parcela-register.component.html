@@ -8,20 +8,20 @@
       <!-- Seleccionar Parcela -->
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Parcela</mat-label>
-        <mat-icon matPrefix>map</mat-icon>
+        <mat-icon matPrefix>area_chart</mat-icon>
         <input matInput formControlName="parcela" required>
         <mat-error *ngIf="siembraForm.get('parcela')?.invalid && siembraForm.get('parcela')?.touched">
-          La parcela es requerida.
+          La parcela es obligatorio.
         </mat-error>
       </mat-form-field>
 
       <!-- Variedad de Uva -->
       <mat-form-field class="form-field" appearance="fill">
-        <mat-label>Variedad de Uva</mat-label>
-        <mat-icon matPrefix>local_florist</mat-icon>
+        <mat-label>Tipo de Uva</mat-label>
+        <mat-icon matPrefix>hive</mat-icon>
         <input matInput formControlName="variedadUva" required>
         <mat-error *ngIf="siembraForm.get('variedadUva')?.invalid && siembraForm.get('variedadUva')?.touched">
-          La variedad de uva es requerida.
+          el tipo de uva es obligatorio.
         </mat-error>
       </mat-form-field>
 
@@ -29,19 +29,21 @@
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Fecha de Siembra</mat-label>
         <mat-icon matPrefix>calendar_today</mat-icon>
-        <input matInput formControlName="fechaSiembra" type="date" required>
+        <input matInput [matDatepicker]="picker" formControlName="fechaSiembra" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="siembraForm.get('fechaSiembra')?.invalid && siembraForm.get('fechaSiembra')?.touched">
-          La fecha de siembra es requerida.
+          La fecha de siembra es obligatorio.
         </mat-error>
       </mat-form-field>
 
       <!-- Cantidad Sembrada -->
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Cantidad Sembrada</mat-label>
-        <mat-icon matPrefix>grain</mat-icon>
+        <mat-icon matPrefix>grass</mat-icon>
         <input matInput formControlName="cantidadSembrada" type="number" required>
         <mat-error *ngIf="siembraForm.get('cantidadSembrada')?.invalid && siembraForm.get('cantidadSembrada')?.touched">
-          La cantidad sembrada es requerida.
+          La cantidad sembrada es obligatorio.
         </mat-error>
       </mat-form-field>
 
@@ -55,7 +57,7 @@
           <mat-option value="Cosechado">Cosechado</mat-option>
         </mat-select>
         <mat-error *ngIf="siembraForm.get('estadoSiembra')?.invalid && siembraForm.get('estadoSiembra')?.touched">
-          El estado de la siembra es requerido.
+          El estado de la siembra es obligatorio.
         </mat-error>
       </mat-form-field>
 
@@ -68,7 +70,6 @@
         <mat-icon matPrefix>comment</mat-icon>
         <textarea matInput formControlName="comentarios"></textarea>
       </mat-form-field>
-
       <!-- Botones -->
       <div class="button-group">
         <button mat-flat-button color="primary" type="submit" [disabled]="siembraForm.invalid">

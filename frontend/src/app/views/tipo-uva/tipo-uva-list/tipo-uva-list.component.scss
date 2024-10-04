@@ -58,3 +58,20 @@
   flex: 1; /* Permite que cada campo se expanda uniformemente */
 }
 
+
+.action-button {
+  padding: 0; /* Elimina el padding del botón para acercar los íconos */
+  margin-right: 2px; /* Espaciado entre los botones */
+}
+
+.mat-icon {
+  font-size: 20px; /* Tamaño de los íconos */
+}
+
+.delete-icon {
+  color: rgb(245, 25, 25); /* Color rojo para el ícono de eliminar */
+}
+
+.edit-icon {
+  color: rgb(0, 234, 255); /* Color azul para el ícono de editar */
+}

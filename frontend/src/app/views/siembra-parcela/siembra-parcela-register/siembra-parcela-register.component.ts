@@ -28,7 +28,7 @@ export class SiembraParcelaRegisterComponent implements OnInit {
       fechaSiembra: ['', Validators.required],
       cantidadSembrada: [0, [Validators.required, Validators.min(1)]],
       estadoSiembra: ['', Validators.required],
-      plagas: [false],
+      plagas: ['false'],
       comentarios: ['']
     });
   }

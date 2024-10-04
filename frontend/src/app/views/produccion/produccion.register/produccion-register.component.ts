@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ProduccionService } from '../produccion.service';
 import { Produccion } from '../Models/produccion.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-produccion-register',
@@ -62,25 +64,31 @@ export class ProduccionRegisterComponent implements OnInit {
   constructor(
     private produccionService: ProduccionService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute // Inyectar ActivatedRoute
   ) {}
+  
 
   ngOnInit(): void {
-    // Verificar si hay modo de edición (puedes cargar el ID desde el estado)
-    const id = this.router.getCurrentNavigation()?.extras.state?.['id'];
+    const id = this.route.snapshot.paramMap.get('id'); // Usar ActivatedRoute para obtener el ID
     if (id) {
       this.isEditMode = true;
       this.isReadOnly = true; // Deshabilitar campos en modo de edición
-      this.cargarProduccion(+id);
+      this.cargarProduccion(+id); // Carga los datos de producción
     }
   }
-
+  
   cargarProduccion(id: number): void {
     const produccion = this.produccionService.getProduccion(id);
     if (produccion) {
       this.nuevaProduccion = { ...produccion };
+    } else {
+      // Manejo del error si la producción no se encuentra
+      this.mostrarMensaje('Producción no encontrada.');
+      this.router.navigate(['/produccion']); // Regresar a la lista si no se encuentra
     }
   }
+  
 
   registrarParcela(): void {
     if (this.isEditMode) {

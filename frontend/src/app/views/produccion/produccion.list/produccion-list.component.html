@@ -25,9 +25,9 @@
       <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
           <td mat-cell *matCellDef="let produccion">
-              <button mat-icon-button (click)="selectProduccion(produccion)">
-                  <mat-icon>edit</mat-icon> <!-- Icono de editar -->
-              </button>
+             
+              <button mat-button (click)="editarProduccion(produccion.id)">Editar</button>
+
               <button mat-icon-button color="warn" (click)="deleteProduccion(produccion.id)">
                   <mat-icon>delete</mat-icon> <!-- Icono de eliminar -->
               </button>

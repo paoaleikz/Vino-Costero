@@ -44,6 +44,7 @@ const routes: Routes = [
       // Rutas para el Control de Producción de Vinos (listado y registro)
       { path: "produccion", component: ProduccionListComponent, canActivate: [AuthGuard] },
       { path: "produccion/register", component: ProduccionRegisterComponent, canActivate: [AuthGuard] },
+      { path: 'produccion/edit/:id', component: ProduccionRegisterComponent }
     
     ]
 

@@ -33,6 +33,7 @@ export class ProduccionService {
             this.producciones[index] = { ...produccion, id }; // Actualiza la producción
         }
     }
+    
 
     // Elimina una producción por su ID
     deleteProduccion(id: number): void {

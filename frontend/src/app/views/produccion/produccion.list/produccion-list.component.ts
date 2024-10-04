@@ -37,4 +37,8 @@ export class ProduccionListComponent implements OnInit {
     handleAddClick(): void {
         this.router.navigate(['/produccion/register']); // Redirige a la página de registro
     }
+    editarProduccion(id: number): void {
+      this.router.navigate(['/produccion/edit', id]);
+    }
+    
 }

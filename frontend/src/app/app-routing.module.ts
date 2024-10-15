@@ -15,6 +15,8 @@ import { SiembraParcelaRegisterComponent } from './views/siembra-parcela/siembra
 import { authGuard } from './guards/auth.guard';  // Un guard opcional para proteger rutas
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
+import { RoleGuard } from './views/auth/role.guard'; // Importa el guard de roles
+
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -23,26 +25,88 @@ const routes: Routes = [
   {
     path: "",
     component: FullComponent,
-    canActivate: [authGuard],
     children: [
-      { path: "", redirectTo: "/childrens", pathMatch: "full" },
       { path: "home", component: DashboardComponent },
-      { path: "tierra", component: ControlTierraListComponent },               // Lista de controles
-      { path: "tierra/register", component: ControlTierraRegisterComponent },  // Formulario de registro
-      { path: "parcela", component: ParcelaListComponent },
-      { path: 'parcela/register', component: ParcelaRegisterComponent },
-      { path: "tipoUvas", component: TipoUvaListComponent },
-      { path: "tipoUvas/register", component: TipoUvaRegisterComponent },
-      { path: 'siembraParcela', component: SiembraParcelaListComponent },
-      { path: 'siembraParcela/register', component: SiembraParcelaRegisterComponent },
-      { path: "produccion", component: ProduccionListComponent },
-      { path: "produccion/register", component: ProduccionRegisterComponent },
-      { path: 'produccion/edit/:id', component: ProduccionRegisterComponent }
+
+      // Rutas para el Control de Tierra
+      { 
+        path: "tierra", 
+        component: ControlTierraListComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+      { 
+        path: "tierra/register", 
+        component: ControlTierraRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'supervisor' } // Supervisor puede registrar
+      },
+
+      // Rutas para Parcelas
+      { 
+        path: "parcela", 
+        component: ParcelaListComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+      { 
+        path: 'parcela/register', 
+        component: ParcelaRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+
+      // Rutas para Tipos de Uvas
+      { 
+        path: "tipoUvas", 
+        component: TipoUvaListComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+      { 
+        path: "tipoUvas/register", 
+        component: TipoUvaRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+
+      // Rutas para Siembra de Parcelas
+      { 
+        path: 'siembraParcela', 
+        component: SiembraParcelaListComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'supervisor' } // Solo supervisor tiene acceso
+      },
+      { 
+        path: 'siembraParcela/register', 
+        component: SiembraParcelaRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'supervisor' } // Solo supervisor tiene acceso
+      },
+
+      // Rutas para Producción
+      { 
+        path: "produccion", 
+        component: ProduccionListComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'supervisor' } // Supervisor también puede ver producción
+      },
+      { 
+        path: "produccion/register", 
+        component: ProduccionRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
+      { 
+        path: 'produccion/edit/:id', 
+        component: ProduccionRegisterComponent, 
+        canActivate: [RoleGuard], 
+        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+      },
     ]
   },
   { path: "**", redirectTo: "/login", pathMatch: "full" },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,51 @@
+<div class="auth-container">
+  <div class="auth-content">
+    <!-- Imagen a la izquierda -->
+    <div class="auth-image">
+      <img src="assets/images/vinos.avif">
+    </div>
+
+    <!-- Formulario a la derecha -->
+    <div class="auth-form">
+      <div class="card auth-card">
+        <div class="card-body">
+          <h2 class="mb-32">Bienvenido a Vinos Costeros</h2>
+          <h4 class="mb-32">Iniciar Sesión</h4>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="Introduce tu email">
+              <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                El email es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                El formato del email no es válido.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Introduce tu contraseña">
+              <button mat-icon-button matSuffix (click)="hide = !hide" aria-label="Toggle password visibility">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                La contraseña es obligatoria.
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                La contraseña debe tener al menos 6 caracteres.
+              </mat-error>
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: center; gap: 16px;">
+              <button mat-flat-button color="accent" type="button" (click)="goToRegister()">Registrarse</button>
+              <button mat-flat-button color="primary" [disabled]="loginForm.invalid" type="submit">Iniciar Sesión</button>
+            </div>
+             <app-alert *ngIf="authError" [message]="authError" type="error"></app-alert>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

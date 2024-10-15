@@ -12,47 +12,37 @@ import { ProduccionRegisterComponent } from './views/produccion/produccion.regis
 import { FullComponent } from './layouts/full/full.component';
 import { SiembraParcelaListComponent } from './views/siembra-parcela/siembra-parcela-list/siembra-parcela-list.component';
 import { SiembraParcelaRegisterComponent } from './views/siembra-parcela/siembra-parcela-register/siembra-parcela-register.component';
-import { LoginComponent } from './views/security/login/login.component'; // Importa el componente de Login
-import { AuthGuard } from './views/security/auth.guard'; // Asegúrate de que la ruta sea correctaimport { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard.component'; // Ajusta la ruta según tu estructura
-
+import { authGuard } from './guards/auth.guard';  // Un guard opcional para proteger rutas
+import { LoginComponent } from './views/auth/login/login.component';
+import { RegisterComponent } from './views/auth/register/register.component';
 
 const routes: Routes = [
+  { path: "", redirectTo: "/login", pathMatch: "full" },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: "",
     component: FullComponent,
+    canActivate: [authGuard],
     children: [
-      { path: "admin-dashboard", component: DashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
-      { path: "", redirectTo: "/login", pathMatch: "full" }, // Redirigir a login si la ruta está vacía
-      { path: "login", component: LoginComponent }, // Ruta para el componente de Login
-      { path: "home", component: DashboardComponent, canActivate: [AuthGuard] }, // Protegido por AuthGuard
-      // Rutas para Control de Tierra (listado y registro)
-      { path: "tierra", component: ControlTierraListComponent, canActivate: [AuthGuard] },               // Lista de controles
-      { path: "tierra/register", component: ControlTierraRegisterComponent, canActivate: [AuthGuard] },  // Formulario de registro
-
-      // Rutas para las parcelas (listado y registro)
-      { path: "parcela", component: ParcelaListComponent, canActivate: [AuthGuard] },
-      { path: 'parcela/register', component: ParcelaRegisterComponent, canActivate: [AuthGuard] },
-
-      // Rutas para las uvas (listado y registro)
-      { path: "tipoUvas", component: TipoUvaListComponent, canActivate: [AuthGuard] },
-      { path: "tipoUvas/register", component: TipoUvaRegisterComponent, canActivate: [AuthGuard] },
-
-      // Rutas para la siembra de parcelas (listado y registro)
-      { path: 'siembraParcela', component: SiembraParcelaListComponent, canActivate: [AuthGuard] },
-      { path: 'siembraParcela/register', component: SiembraParcelaRegisterComponent, canActivate: [AuthGuard] },
-
-      // Rutas para el Control de Producción de Vinos (listado y registro)
-      { path: "produccion", component: ProduccionListComponent, canActivate: [AuthGuard] },
-      { path: "produccion/register", component: ProduccionRegisterComponent, canActivate: [AuthGuard] },
+      { path: "", redirectTo: "/childrens", pathMatch: "full" },
+      { path: "home", component: DashboardComponent },
+      { path: "tierra", component: ControlTierraListComponent },               // Lista de controles
+      { path: "tierra/register", component: ControlTierraRegisterComponent },  // Formulario de registro
+      { path: "parcela", component: ParcelaListComponent },
+      { path: 'parcela/register', component: ParcelaRegisterComponent },
+      { path: "tipoUvas", component: TipoUvaListComponent },
+      { path: "tipoUvas/register", component: TipoUvaRegisterComponent },
+      { path: 'siembraParcela', component: SiembraParcelaListComponent },
+      { path: 'siembraParcela/register', component: SiembraParcelaRegisterComponent },
+      { path: "produccion", component: ProduccionListComponent },
+      { path: "produccion/register", component: ProduccionRegisterComponent },
       { path: 'produccion/edit/:id', component: ProduccionRegisterComponent }
-    
     ]
-
   },
-
-  // Rutas por defecto y de manejo de errores
-  { path: "**", redirectTo: "/login", pathMatch: "full" },  // Redirigir a login para rutas no encontradas
+  { path: "**", redirectTo: "/login", pathMatch: "full" },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FloatButtonComponent } from './float-button/float-button.component'
 import { InfoVaccineCardComponent } from './info-vaccine-card/info-vaccine-card.components'
 import { AgeVaccineCardComponent } from './age-vaccine-card/age-vaccine-card.components'
+import { AlertComponent } from './alert/alert.component'
 
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     FloatButtonComponent,
     InfoVaccineCardComponent,
-    AgeVaccineCardComponent
+    AgeVaccineCardComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { FormsModule } from '@angular/forms';
   exports: [
     FloatButtonComponent,
     InfoVaccineCardComponent,
-    AgeVaccineCardComponent
+    AgeVaccineCardComponent,
+    AlertComponent
   ]
 })
 export class ComponentsModule { }

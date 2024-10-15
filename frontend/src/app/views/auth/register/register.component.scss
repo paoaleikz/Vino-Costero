@@ -1,0 +1,87 @@
+/* Contenedor que organiza la imagen y el formulario horizontalmente */
+.auth-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+}
+
+/* Imagen a la izquierda ocupando el 60% */
+.auth-image {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-image img {
+  width: 60%;
+  height: 80vh; /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor manteniendo la proporción */
+}
+
+/* Formulario a la derecha ocupando el 40% */
+.auth-form {
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: cadetblue;
+}
+
+.auth-card {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+mat-form-field {
+  position: relative; /* Necesario para que los elementos internos se posicionen correctamente */
+}
+
+mat-error {
+  font-size: 12px; /* Tamaño del texto más pequeño */
+  color: red; /* Color de error */
+  position: absolute; /* Posicionamiento absoluto */
+  right: 0; /* Mueve el mensaje de error a la derecha */
+  top: 3 ; /* Alinea el mensaje en la parte superior (puedes ajustar esto según la altura de tus inputs) */
+  white-space: nowrap; /* Para evitar que el texto de error se divida en varias líneas */
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Ajustar el layout para que la imagen esté arriba y el formulario abajo */
+  .auth-content {
+    flex-direction: column; /* Cambia la dirección de flex a columna */
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Imagen ocupa el 100% del ancho en pantallas pequeñas */
+  .auth-image {
+    width: 100%;
+  }
+
+  .auth-image img {
+    height: auto; /* Imagen no necesita cubrir la altura completa */
+    object-fit: contain; /* Imagen se ajusta sin recortarse */
+  }
+
+  /* Formulario también ocupa el 100% del ancho */
+  .auth-form {
+    width: 100%;
+    padding: 20px;
+  }
+}
+.alert {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.error {
+  background-color: #f8d7da; // Color de fondo para errores
+  color: #721c24; // Color de texto para errores
+}

@@ -26,14 +26,11 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
       <td mat-cell *matCellDef="let produccion">
-        <!-- Verifica si el usuario tiene rol de admin o supervisor para habilitar acciones -->
-        <button mat-button color="primary" *ngIf="userRole === 'admin' || userRole === 'supervisor'" 
-                (click)="editarProduccion(produccion.id)">
+        <button mat-button color="primary" (click)="editarProduccion(produccion.id)">
           <mat-icon>edit</mat-icon>
         </button>
         
-        <button mat-icon-button color="warn" *ngIf="userRole === 'admin'" 
-                (click)="deleteProduccion(produccion.id)">
+        <button mat-icon-button color="warn" (click)="deleteProduccion(produccion.id)">
           <mat-icon>delete</mat-icon> <!-- Icono de eliminar -->
         </button>
       </td>
@@ -45,7 +42,5 @@
 </div>
 
 <!-- Botón para agregar nueva producción -->
-<app-float-button icon="add_circle" position="bottom-right" 
-                   *ngIf="userRole === 'admin' || userRole === 'supervisor'" 
-                   (action)="handleAddClick();">
+<app-float-button icon="add_circle" position="bottom-right" (action)="handleAddClick();">
 </app-float-button>

@@ -33,13 +33,13 @@ const routes: Routes = [
         path: "tierra", 
         component: ControlTierraListComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['admin', 'supervisor', 'operario'] } // Todos tienen acceso
       },
       { 
         path: "tierra/register", 
         component: ControlTierraRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'supervisor' } // Supervisor puede registrar
+        data: { expectedRoles: ['admin', 'supervisor'] } // Solo admin y supervisor pueden registrar
       },
 
       // Rutas para Parcelas
@@ -47,13 +47,13 @@ const routes: Routes = [
         path: "parcela", 
         component: ParcelaListComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['admin', 'supervisor', 'operario'] } // Todos tienen acceso
       },
       { 
         path: 'parcela/register', 
         component: ParcelaRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['admin'] } // Solo el admin puede registrar
       },
 
       // Rutas para Tipos de Uvas
@@ -61,13 +61,13 @@ const routes: Routes = [
         path: "tipoUvas", 
         component: TipoUvaListComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['admin', 'supervisor', 'operario'] } // Todos tienen acceso
       },
       { 
         path: "tipoUvas/register", 
         component: TipoUvaRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['supervisor','admin'] } // Solo el admin puede registrar
       },
 
       // Rutas para Siembra de Parcelas
@@ -75,13 +75,13 @@ const routes: Routes = [
         path: 'siembraParcela', 
         component: SiembraParcelaListComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'supervisor' } // Solo supervisor tiene acceso
+        data: { expectedRoles: ['supervisor', 'admin', 'operario'] } // Supervisor y admin pueden acceder
       },
       { 
         path: 'siembraParcela/register', 
         component: SiembraParcelaRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'supervisor' } // Solo supervisor tiene acceso
+        data: { expectedRoles: ['admin','supervisor'] } // Solo el supervisor puede registrar
       },
 
       // Rutas para Producción
@@ -89,19 +89,19 @@ const routes: Routes = [
         path: "produccion", 
         component: ProduccionListComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'supervisor' } // Supervisor también puede ver producción
+        data: { expectedRoles: ['supervisor', 'admin', 'operario'] } // Todos pueden ver producción
       },
       { 
         path: "produccion/register", 
         component: ProduccionRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['supervisor','admin', 'operario'] } // Solo el admin puede registrar
       },
       { 
         path: 'produccion/edit/:id', 
         component: ProduccionRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRole: 'admin' } // Solo admin tiene acceso
+        data: { expectedRoles: ['supervisor','admin'] } // Solo el admin puede editar
       },
     ]
   },

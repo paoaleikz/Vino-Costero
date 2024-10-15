@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate {
+  constructor(private router: Router) {}
+
   canActivate(route: any): boolean {
-    const expectedRole = route.data.expectedRole; // Rol esperado para esta ruta
+    const expectedRoles = route.data.expectedRoles; // Array de roles esperados
     const userRole = localStorage.getItem('userRole'); // Rol del usuario autenticado
 
-    // Solo verifica el rol, no redirige
-    return true; // Permite el acceso pero se manejará a nivel de componente
+    // Verifica si el rol del usuario está en los roles esperados
+    if (expectedRoles.includes(userRole)) {
+      return true; // Acceso permitido
+    }
+
+    // Opcional: Manejar el acceso denegado si es necesario
+    return false; // Acceso denegado
   }
 }

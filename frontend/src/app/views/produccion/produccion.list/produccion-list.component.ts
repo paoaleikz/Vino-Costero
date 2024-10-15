@@ -10,12 +10,6 @@ import { Router } from '@angular/router';
 })
 export class ProduccionListComponent implements OnInit {
     producciones: Produccion[] = [];
-    userRole: string | null = localStorage.getItem('userRole');
-
-    // Verifica si el usuario tiene acceso a la funcionalidad
-    canEdit() {
-      return this.userRole === 'admin'; // Solo el admin puede editar
-    }
 
     constructor(
         private produccionService: ProduccionService,

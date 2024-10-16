@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+// Definimos la interfaz para los usuarios
+interface User {
+  email: string;
+  password: string;
+  role: string;
+}
+
 @Component({
   selector: 'app-login',
   styleUrls: ['./login.component.scss'],
@@ -12,7 +19,7 @@ export class LoginComponent {
   authError: string | null = null;
 
   // Datos estáticos de usuarios con sus roles
-  private staticUsers = [
+  private staticUsers: User[] = [
     {
       email: 'Paola.administrador@gmail.com',
       password: '123456',
@@ -27,7 +34,7 @@ export class LoginComponent {
       email: 'Usuario.operario12@gmail.com',
       password: '123456',
       role: 'operario' // Operario
-    },
+    }
   ];
 
   hide = true; // Para mostrar/ocultar la contraseña
@@ -44,8 +51,13 @@ export class LoginComponent {
   onSubmit(): void {
     const { email, password } = this.loginForm.value;
 
-    // Verifica si las credenciales coinciden con algún usuario en el array estático
-    const foundUser = this.staticUsers.find(user => user.email === email && user.password === password);
+    // Obtener usuarios desde localStorage
+    const storedUsers = localStorage.getItem('users');
+    const registeredUsers: User[] = storedUsers ? JSON.parse(storedUsers) : [];
+
+    // Verifica si las credenciales coinciden con algún usuario en los datos estáticos o en localStorage
+    const foundUser = this.staticUsers.find((user: User) => user.email === email && user.password === password)
+      || registeredUsers.find((user: User) => user.email === email && user.password === password);
 
     if (foundUser) {
       // Guardamos el rol en localStorage

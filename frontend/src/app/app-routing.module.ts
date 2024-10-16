@@ -53,7 +53,7 @@ const routes: Routes = [
         path: 'parcela/register', 
         component: ParcelaRegisterComponent, 
         canActivate: [RoleGuard], 
-        data: { expectedRoles: ['admin'] } // Solo el admin puede registrar
+        data: { expectedRoles: ['admin', 'supervisor'] } // Solo el admin puede registrar
       },
 
       // Rutas para Tipos de Uvas
